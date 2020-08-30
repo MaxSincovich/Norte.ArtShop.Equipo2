@@ -1,1 +1,0 @@
-# Norte.ArtShop.Equipo2
