@@ -26,8 +26,7 @@ namespace ArtShop.UI.Web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css", "~/Content/pre-icons.css", "~/Content/animate.css",
-                      "~/Content/style.css", "~/Content/prettyPhoto.css", "~/Content/font-awesome.min.css",
-                      "~/Content/Site.css"));
+                      "~/Content/style.css", "~/Content/font-awesome.min.css","~/Content/Site.css", "~/Content/prettyPhoto.css"));
         }
     }
 }
