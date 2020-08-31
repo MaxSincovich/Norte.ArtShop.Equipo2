@@ -144,6 +144,8 @@
     <Content Include="fonts\Pe-icon-7-stroke.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\bg\arte2.jpg" />
+    <Content Include="images\bg\artes1.jpg" />
     <Content Include="images\bg\bg1.jpg" />
     <Content Include="images\bg\bg2.jpg" />
     <Content Include="images\bg\bg3.jpg" />
@@ -160,6 +162,7 @@
     <Content Include="images\loading.GIF" />
     <Content Include="images\logo.png" />
     <Content Include="images\marker.png" />
+    <Content Include="images\bg\artes0.jpg" />
     <Content Include="images\portfolio\folio01.jpg" />
     <Content Include="images\portfolio\folio02.jpg" />
     <Content Include="images\portfolio\folio03.jpg" />
