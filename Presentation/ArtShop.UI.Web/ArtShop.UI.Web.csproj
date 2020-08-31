@@ -191,6 +191,8 @@
     <Content Include="images\portfolio\folio17.jpg" />
     <Content Include="images\portfolio\folio18.jpg" />
     <Content Include="images\team\ObraArte1.jpg" />
+    <Content Include="images\team\ObraArte2.jpg" />
+    <Content Include="images\team\ObraArte3.jpg" />
     <Content Include="images\team\team01.jpg" />
     <Content Include="images\team\team02.jpg" />
     <Content Include="images\team\team03.jpg" />
