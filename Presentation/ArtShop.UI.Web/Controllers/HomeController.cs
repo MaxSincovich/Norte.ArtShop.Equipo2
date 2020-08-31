@@ -26,5 +26,7 @@ namespace ArtShop.UI.Web.Controllers
 
             return View();
         }
+
+       
     }
 }
