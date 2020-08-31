@@ -4,8 +4,7 @@
 <h2>@ViewBag.Title</h2>
 @*<h3>@ViewBag.Message</h3>*@
 
-@if (User.Identity.IsAuthenticated)
-    {
+
 
 <p>
     <strong> ART SHOP </strong>nace para crear un puente entre artistas talentosos y gente que quiere conectar y disfrutar del arte.
@@ -23,8 +22,4 @@
 </p>
 
 
-}
-    else
-    {
-        Response.Redirect("/Home/Index");
-    }
+
