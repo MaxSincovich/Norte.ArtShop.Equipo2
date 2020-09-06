@@ -153,6 +153,10 @@
     <Content Include="fonts\Pe-icon-7-stroke.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\Artistas\GustavoLoza.jpg" />
+    <Content Include="images\Artistas\MonikaWaraxa.jpg" />
+    <Content Include="images\Artistas\SylvieFage.jpg" />
+    <Content Include="images\Artistas\Yampier Sardina.jpg" />
     <Content Include="images\bg\arte2.jpg" />
     <Content Include="images\bg\artes1.jpg" />
     <Content Include="images\Galeria\galeriaArte1.jpg" />
