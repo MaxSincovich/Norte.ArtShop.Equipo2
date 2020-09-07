@@ -11,8 +11,8 @@ namespace ArtShop.UI.Web.Controllers
         public ActionResult Index()
         {
             return View();
-        
-    }
+
+        }
 
 
 }
