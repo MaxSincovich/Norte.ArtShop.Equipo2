@@ -152,7 +152,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\Pe-icon-7-stroke.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="images\Artistas\GustavoLoza.jpg" />
     <Content Include="images\Artistas\MonikaWaraxa.jpg" />
     <Content Include="images\Artistas\SylvieFage.jpg" />
@@ -241,8 +240,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Artista\Index.cshtml" />
     <Content Include="Views\Galeria\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Artista\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -265,12 +265,20 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\ArtShop.Data\ArtShop.Data.csproj">
+      <Project>{E8756EC0-B6DA-4513-8B62-F694CDD132A3}</Project>
+      <Name>ArtShop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\ArtShop.Services\ArtShop.Services.csproj">
+      <Project>{2477c2b7-82d1-40aa-b8a7-5385a9b7065d}</Project>
+      <Name>ArtShop.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Shared\ArtShop.Entities\ArtShop.Entities.csproj">
-      <Project>{549B3D8D-7C35-4F25-92E6-DF9D195310E0}</Project>
+      <Project>{549b3d8d-7c35-4f25-92e6-df9d195310e0}</Project>
       <Name>ArtShop.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\ArtShop.UI.Process\ArtShop.UI.Process.csproj">
-      <Project>{9F96235C-A960-4BE1-969B-5E3C1C17EC3A}</Project>
+      <Project>{9f96235c-a960-4be1-969b-5e3c1c17ec3a}</Project>
       <Name>ArtShop.UI.Process</Name>
     </ProjectReference>
   </ItemGroup>
