@@ -1,17 +1,35 @@
-ï»¿using System;
+//====================================================================================================
+// Código base generado con Visual Studio: (Build 1.0.1973)
+// Layered Architecture Solution Guidance
+// Generado por vcontreras - MCGA
+//====================================================================================================
+
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
+
 
 namespace ArtShop.Entities.Model
 {
-    public class Cart : IdentityBase
+    [Serializable]
+    public partial class Cart : IdentityBase
     {
-        public string UserId { get; set; }
+        public Cart()
+        {
+            this.CartItem = new HashSet<CartItem>();
+        }
+
+        public string Cookie { get; set; }
+
         public DateTime CartDate { get; set; }
+
         public int ItemCount { get; set; }
-        public string Comprado { get; set; }
-        public List<CartItem> Items { get; set; }
+
+        public virtual ICollection<CartItem> CartItem { get; set; }
+
+
     }
 }

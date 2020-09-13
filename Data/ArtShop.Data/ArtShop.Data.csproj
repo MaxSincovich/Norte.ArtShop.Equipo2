@@ -56,6 +56,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\SEC_User.cs" />
+    <Compile Include="EntityFramework\ArtShopDbContext.cs" />
+    <Compile Include="EntityFramework\BaseDataService.cs" />
+    <Compile Include="EntityFramework\IDataService.cs" />
+    <Compile Include="Migrations\202009131928400_InitialCreate.cs" />
+    <Compile Include="Migrations\202009131928400_InitialCreate.designer.cs">
+      <DependentUpon>202009131928400_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +79,11 @@
       <Project>{284623C1-00DD-42B3-A85D-7BE5A9686D83}</Project>
       <Name>ArtShop.Framework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009131928400_InitialCreate.resx">
+      <DependentUpon>202009131928400_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

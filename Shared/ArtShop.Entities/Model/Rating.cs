@@ -14,21 +14,13 @@ using System.Runtime.Serialization;
 
 namespace ArtShop.Entities.Model
 {
-    
-    
-    
     [Serializable]
-    
-    public partial class CartItem : IdentityBase
+    public partial class Rating : IdentityBase
     {
-        public double Price { get; set; }
+        public int Stars { get; set; }
 
-        public int Quantity { get; set; }
+        public string UserName { get; set; }
 
-        public int CartId { get; set; }
-        public int ProductId { get; set; }
-
-        public virtual Cart Cart { get; set; }
         public virtual Product Product { get; set; }
     }
 }

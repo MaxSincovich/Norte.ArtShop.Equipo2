@@ -16,19 +16,21 @@ namespace ArtShop.Entities.Model
 {
     
     
-    
     [Serializable]
     
-    public partial class CartItem : IdentityBase
+    public partial class Order : IdentityBase
     {
-        public double Price { get; set; }
 
-        public int Quantity { get; set; }
+        public DateTime OrderDate { get; set; }
 
-        public int CartId { get; set; }
-        public int ProductId { get; set; }
+        public double TotalPrice { get; set; }
 
-        public virtual Cart Cart { get; set; }
-        public virtual Product Product { get; set; }
+        public int OrderNumber { get; set; }
+
+        public int ItemCount { get; set; }
+
+        public string UserName { get; set; }
+
+        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
     }
 }
