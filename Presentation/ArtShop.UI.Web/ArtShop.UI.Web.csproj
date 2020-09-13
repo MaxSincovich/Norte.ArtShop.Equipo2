@@ -152,7 +152,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\Pe-icon-7-stroke.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="images\Artistas\GustavoLoza.jpg" />
     <Content Include="images\Artistas\MonikaWaraxa.jpg" />
     <Content Include="images\Artistas\SylvieFage.jpg" />
