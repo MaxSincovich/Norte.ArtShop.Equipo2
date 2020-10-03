@@ -1,9 +1,9 @@
-﻿namespace ArtShop.Data.Migrations
+namespace ArtShop.Data.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class InitialMigrationCreateEquipo2 : DbMigration
     {
         public override void Up()
         {
@@ -14,7 +14,7 @@
                         Id = c.Int(nullable: false, identity: true),
                         FirstName = c.String(nullable: false, maxLength: 50),
                         LastName = c.String(nullable: false, maxLength: 50),
-                        LifeSpan = c.String(maxLength: 10),
+                        LifeSpan = c.String(maxLength: 100),
                         Country = c.String(maxLength: 50),
                         Description = c.String(maxLength: 2000),
                         TotalProducts = c.Int(nullable: false),
@@ -173,18 +173,18 @@
         
         public override void Down()
         {
-            DropForeignKey("dbo.Rating", "Product_Id", "dbo.Product");
-            DropForeignKey("dbo.OrderDetail", "ProductId", "dbo.Product");
-            DropForeignKey("dbo.OrderDetail", "OrderId", "dbo.Order");
-            DropForeignKey("dbo.CartItem", "ProductId", "dbo.Product");
-            DropForeignKey("dbo.CartItem", "CartId", "dbo.Cart");
-            DropForeignKey("dbo.Product", "ArtistId", "dbo.Artist");
             DropIndex("dbo.Rating", new[] { "Product_Id" });
             DropIndex("dbo.OrderDetail", new[] { "ProductId" });
             DropIndex("dbo.OrderDetail", new[] { "OrderId" });
             DropIndex("dbo.CartItem", new[] { "ProductId" });
             DropIndex("dbo.CartItem", new[] { "CartId" });
             DropIndex("dbo.Product", new[] { "ArtistId" });
+            DropForeignKey("dbo.Rating", "Product_Id", "dbo.Product");
+            DropForeignKey("dbo.OrderDetail", "ProductId", "dbo.Product");
+            DropForeignKey("dbo.OrderDetail", "OrderId", "dbo.Order");
+            DropForeignKey("dbo.CartItem", "ProductId", "dbo.Product");
+            DropForeignKey("dbo.CartItem", "CartId", "dbo.Cart");
+            DropForeignKey("dbo.Product", "ArtistId", "dbo.Artist");
             DropTable("dbo.OrderNumber");
             DropTable("dbo.Error");
             DropTable("dbo.Rating");

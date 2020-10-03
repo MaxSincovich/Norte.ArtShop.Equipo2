@@ -20,7 +20,7 @@ namespace ArtShop.Entities.Model
             public string LastName { get; set; }
 
             [DisplayName("Life Span")]
-            [MaxLength(10, ErrorMessage = "Longitud  10 caracteres")]
+            [MaxLength(100, ErrorMessage = "Longitud  100 caracteres")]
             public string LifeSpan { get; set; }
 
             [DisplayName("Country")]
