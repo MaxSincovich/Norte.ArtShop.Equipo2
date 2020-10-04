@@ -1,5 +1,4 @@
 ﻿using ArtShop.Business;
-using ArtShop.Entities;
 using ArtShop.Entities.Model;
 using System;
 using System.Collections.Generic;

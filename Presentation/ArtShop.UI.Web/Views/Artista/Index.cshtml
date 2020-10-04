@@ -1,4 +1,6 @@
-﻿<script type="text/javascript">
+﻿
+@model IEnumerable<ArtShop.Entities.Model.Artist>
+<script type="text/javascript">
     jQuery(document).ready(function($){
     'use strict';
         jQuery('body').backstretch([
@@ -59,40 +61,21 @@
             </div>
 
             <ul class="portfolio-items isotope fade-up">
-                <li class="portfolio-item col-2 apps isotope-item" , style="margin: 10px">
-                    <div class="item-inner">
-                        <div class="col-sm-3">
-                            <img src="http://placehold.it/250x250" alt="">
+                @foreach (var _artist in Model)
+                {
+                    <li class="portfolio-item col-2 apps isotope-item" , style="margin: 10px">
+                        <div class="item-inner">
+                            <div class="col-sm-3">
+                                <img  src="~/images/Artistas/@_artist.LifeSpan" alt="">
+                            </div>
+                            <div class="col-sm-9">
+                                <h3>@_artist.FirstName @_artist.LastName</h3>
+                                <p>@_artist.Description</p>
+                            </div>
                         </div>
-                        <div class="col-sm-9">
-                            <h3>TITULO 1</h3>
-                            <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!, Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit! ,Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>
-                        </div>
-                    </div>
-                </li><!--/.portfolio-item-->
-                <li class="portfolio-item col-2 apps isotope-item" , style="margin: 10px">
-                    <div class="item-inner">
-                        <div class="col-sm-3">
-                            <img src="http://placehold.it/250x250" alt="">
-                        </div>
-                        <div class="col-sm-9">
-                            <h3>TITULO 1</h3>
-                            <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!, Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit! ,Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>
-                        </div>
-                    </div>
-                </li><!--/.portfolio-item-->
-                <li class="portfolio-item col-2 apps isotope-item" , style="margin: 10px">
-                    <div class="item-inner">
-                        <div class="col-sm-3">
-                            <img src="http://placehold.it/250x250" alt="">
-                        </div>
-                        <div class="col-sm-9">
-                            <h3>TITULO 1</h3>
-                            <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!, Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit! ,Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit!</p>
-                        </div>
-                    </div>
-                </li><!--/.portfolio-item-->
-            </ul>
+                    </li>
+                    }                    
+                </ul>
         </div>
     </section>
 </div>
