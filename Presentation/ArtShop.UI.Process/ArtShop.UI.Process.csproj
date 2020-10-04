@@ -39,9 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArtistaProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Business\ArtShop.Business\ArtShop.Business.csproj">
+      <Project>{1809c1bc-a45f-4a71-b229-a529689ee4b4}</Project>
+      <Name>ArtShop.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Services\ArtShop.Services.Contracts\ArtShop.Services.Contracts.csproj">
       <Project>{3CD35E18-6CEE-4725-B820-B2A526622690}</Project>
       <Name>ArtShop.Services.Contracts</Name>
@@ -50,6 +55,9 @@
       <Project>{549B3D8D-7C35-4F25-92E6-DF9D195310E0}</Project>
       <Name>ArtShop.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

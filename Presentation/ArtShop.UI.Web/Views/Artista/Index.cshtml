@@ -1,7 +1,83 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-}
+@model IEnumerable<ArtShop.Entities.Model.Artist>
 
-<h2>Index</h2>
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+    'use strict';
+        jQuery('body').backstretch([
+            "/images/Galeria/galeriaArte3.jpg",
+            "/images/Galeria/galeriaArte1.jpg",
+            "/images/Galeria/galeriaArte2.jpg",
+        ], {duration: 5000, fade: 500});
 
+        $("#mapwrapper").gMap({ controls: false,
+            scrollwheel: false,
+            markers: [{
+                latitude:40.7566,
+                longitude: -73.9863,
+            icon: { image: "images/marker.png",
+                iconsize: [44,44],
+                iconanchor: [12,46],
+                infowindowanchor: [12, 0] } }],
+            icon: {
+                image: "images/marker.png",
+                iconsize: [26, 46],
+                iconanchor: [12, 46],
+                infowindowanchor: [12, 0] },
+            latitude:40.7566,
+            longitude: -73.9863,
+            zoom: 14 });
+    });
+</script>
+
+
+
+<section id="single-page-slider" class="no-margin">
+    <div class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="center gap fade-down section-heading">
+                                <h2 class="main-title">Nuestros Artistas</h2>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--/.item-->
+        </div><!--/.carousel-inner-->
+    </div><!--/.carousel-->
+</section><!--/#main-slider-->
+
+<div id="content-wrapper">
+    <section id="portfolio" class="white">
+        <div class="container">
+            <div class="gap"></div>
+            <div class="center gap fade-down section-heading">
+                @*<h2 class="main-title">Examples Of Excellence</h2>
+                    <hr>
+                    <p>Nuestra Seleccion para usted</p>*@
+            </div>
+
+            <ul class="portfolio-items isotope fade-up">
+                @foreach (var _artist in Model)
+                {
+                    <li class="portfolio-item col-2 apps isotope-item" , style="margin: 10px">
+                        <div class="item-inner">
+                            <div class="col-sm-3">
+                                <img  src="~/images/Artistas/@_artist.LifeSpan" alt="">
+                            </div>
+                            <div class="col-sm-9">
+                                <h3>@_artist.FirstName @_artist.LastName</h3>
+                                <h4>@_artist.Country</h4>
+                                <p>@_artist.Description</p>
+                            </div>
+                        </div>
+                    </li>
+                    }                    
+                </ul>
+        </div>
+    </section>
+</div>
