@@ -152,7 +152,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\Pe-icon-7-stroke.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="images\Artistas\GustavoLoza.jpg" />
     <Content Include="images\Artistas\MonikaWaraxa.jpg" />
     <Content Include="images\Artistas\SylvieFage.jpg" />
@@ -241,9 +240,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Artista\Index.cshtml" />
     <Content Include="Views\Galeria\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Artista\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -279,7 +278,7 @@
       <Name>ArtShop.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\ArtShop.UI.Process\ArtShop.UI.Process.csproj">
-      <Project>{9F96235C-A960-4BE1-969B-5E3C1C17EC3A}</Project>
+      <Project>{9f96235c-a960-4be1-969b-5e3c1c17ec3a}</Project>
       <Name>ArtShop.UI.Process</Name>
     </ProjectReference>
   </ItemGroup>
