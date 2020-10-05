@@ -20,13 +20,11 @@ namespace ArtShop.Business
         {
             return db.Update(artist, artist.Id);
         }
-
-
-        public Artist Seleccionar(int id)
-        {
-            var producto = this.ListarTodosLosArtistas().Where(l => l.Id == id).FirstOrDefault();
-            return producto;
-        }
+        //public Artist Seleccionar(int id)
+        //{
+        //    var producto = this.ListarTodosLosArtistas().Where(l => l.Id == id).FirstOrDefault();
+        //    return producto;
+        //}
 
         public Artist Get(int id)
         {

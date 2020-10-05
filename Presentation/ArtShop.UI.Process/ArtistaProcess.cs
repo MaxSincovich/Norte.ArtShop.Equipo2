@@ -15,8 +15,6 @@ namespace ArtShop.UI.Process
         {
             return bis.ListarTodosLosArtistas();
         }
-
-
         public Artist Get(int id)
         {
             return bis.Get(id);
