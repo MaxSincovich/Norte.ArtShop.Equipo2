@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using ArtShop.Entities.Model;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Configuration;
 
 namespace ArtShop.Data
 {
