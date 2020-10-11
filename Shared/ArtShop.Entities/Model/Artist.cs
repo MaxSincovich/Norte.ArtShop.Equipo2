@@ -14,6 +14,7 @@ using System.Runtime.Serialization;
 
 namespace ArtShop.Entities.Model
 {
+    [DataContract]
     [Serializable]
     public partial class Artist : IdentityBase
     {
@@ -21,13 +22,26 @@ namespace ArtShop.Entities.Model
         {
             this.Product = new HashSet<Product>();
         }
+        [DataMember]
         public string FirstName { get; set; }
+
+        [DataMember]
         public string LastName { get; set; }
+
+        [DataMember]
         public string LifeSpan { get; set; }
+
+        [DataMember]
         public string Country { get; set; }
+
+        [DataMember]
         public string Description { get; set; }
+
+        [DataMember]
         public int TotalProducts { get; set; }
 
+
+        [DataMember]
         public virtual ICollection<Product> Product { get; set; }
     }
 }

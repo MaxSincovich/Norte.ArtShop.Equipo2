@@ -13,7 +13,7 @@ namespace ArtShop.UI.Process
         private ArtistBusiness bis = new ArtistBusiness();
         public List<Artist> GetAll()
         {
-            return bis.ListarTodosLosArtistas();
+            return bis.List();
         }
 
 
@@ -24,12 +24,12 @@ namespace ArtShop.UI.Process
 
         public Artist Set(Artist artist)
         {
-            return bis.Agregar(artist);
+            return bis.Add(artist);
         }
 
-        public Artist Edit(Artist artist)
+        public void Edit(Artist artist)
         {
-            return bis.EditarArtista(artist);
+            bis.Edit(artist);
         }
 
     }
