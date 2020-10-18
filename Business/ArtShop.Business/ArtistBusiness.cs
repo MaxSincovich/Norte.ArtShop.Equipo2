@@ -10,44 +10,63 @@ namespace ArtShop.Business
 {
     public class ArtistBusiness
     {
+        //public List<Artist> List()
+        //{
+        //    List<Artist> result = default(List<Artist>);
+        //    var artistDAC = new ArtistDAC();
+        //    result = artistDAC.Select();
+        //    return result;
+        //}
 
-        public List<Artist> List()
+        //public void Edit(Artist artist)
+        //{
+        //    var artistDAC = new ArtistDAC();
+        //    artistDAC.UpdateById(artist);
+        //}
+
+
+        //public Artist Get(int id)
+        //{
+        //    var artistDAC = new ArtistDAC();
+        //    var result = artistDAC.SelectById(id);
+        //    return result;
+        //}
+
+        //public Artist Add(Artist artist)
+        //{
+        //    Artist result = default(Artist);
+        //    var artistDAC = new ArtistDAC();
+
+        //    result = artistDAC.Create(artist);
+        //    return result;
+        //}
+
+
+        //public void Remove(int id)
+        //{
+        //    var artistDAC = new ArtistDAC();
+        //    artistDAC.DeleteById(id);
+        //}
+        private BaseDataService<Artist> db = new BaseDataService<Artist>();
+        public List<Artist> GetArtist()
         {
-            List<Artist> result = default(List<Artist>);
-            var artistDAC = new ArtistDAC();
-            result = artistDAC.Select();
-            return result;
+            return db.Get();
         }
-
-        public void Edit(Artist artist)
+        public Artist EditArtist(Artist artist)
         {
-            var artistDAC = new ArtistDAC();
-            artistDAC.UpdateById(artist);
+            return db.Update(artist, artist.Id);
         }
-
-
-        public Artist Get(int id)
+        public Artist GetById(int id)
         {
-            var artistDAC = new ArtistDAC();
-            var result = artistDAC.SelectById(id);
-            return result;
+            return db.GetById(id);
         }
-
-        public Artist Add(Artist artist)
+        public Artist Create(Artist artist)
         {
-            Artist result = default(Artist);
-            var artistDAC = new ArtistDAC();
-
-            result = artistDAC.Create(artist);
-            return result;
+            return db.Create(artist);
         }
-
-
-        public void Remove(int id)
+        public void Delete (int id)
         {
-            var artistDAC = new ArtistDAC();
-            artistDAC.DeleteById(id);
+            db.Delete(id);
         }
-
     }
 }

@@ -13,21 +13,21 @@ namespace ArtShop.UI.Process
         private ArtistBusiness bis = new ArtistBusiness();
         public List<Artist> GetAll()
         {
-            return bis.List();
+            return bis.GetArtist();
         }
         public Artist Get(int id)
         {
-            return bis.Get(id);
+            return bis.GetById(id);
         }
 
         public Artist Set(Artist artist)
         {
-            return bis.Add(artist);
+            return bis.Create(artist);
         }
 
         public void Edit(Artist artist)
         {
-            bis.Edit(artist);
+            bis.EditArtist(artist);
         }
 
     }

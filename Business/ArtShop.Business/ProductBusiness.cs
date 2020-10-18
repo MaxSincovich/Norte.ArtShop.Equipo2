@@ -27,5 +27,9 @@ namespace ArtShop.Business
         {
             return db.Create(product);
         }
+        public void Delete (int id)
+        {
+            db.Delete(id);
+        }
     }
 }

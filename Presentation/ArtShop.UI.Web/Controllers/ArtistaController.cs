@@ -1,4 +1,5 @@
-﻿using ArtShop.UI.Process;
+﻿using ArtShop.Entities.Model;
+using ArtShop.UI.Process;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +13,8 @@ namespace ArtShop.UI.Web.Controllers
         
         public ActionResult Index()
         {
-
             var lista = artistaProcess.GetAll();
-
             return View(lista);
-
         }
-
-
-}
+    }
 }
