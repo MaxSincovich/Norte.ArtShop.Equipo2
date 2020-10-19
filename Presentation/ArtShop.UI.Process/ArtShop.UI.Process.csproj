@@ -89,6 +89,10 @@
       <Project>{1809C1BC-A45F-4A71-B229-A529689EE4B4}</Project>
       <Name>ArtShop.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Hosts\ArtShop.Hosts.Web\ArtShop.Hosts.Web.csproj">
+      <Project>{dbd9a614-2cb2-4317-bf86-9bdc94e85022}</Project>
+      <Name>ArtShop.Hosts.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Services\ArtShop.Services.Contracts\ArtShop.Services.Contracts.csproj">
       <Project>{3CD35E18-6CEE-4725-B820-B2A526622690}</Project>
       <Name>ArtShop.Services.Contracts</Name>

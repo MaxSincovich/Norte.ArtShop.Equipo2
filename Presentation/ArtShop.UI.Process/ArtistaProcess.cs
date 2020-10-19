@@ -17,7 +17,7 @@ namespace ArtShop.UI.Process
         }
         public Artist Get(int id)
         {
-            var response = HttpGet<Artist>("api/artist/buscar",new List<object>() {id}, MediaType.Json);
+            var response = HttpGet<Artist>("api/artist/buscar", new List<object>() {id}, MediaType.Json);
             return response;
         }
 
