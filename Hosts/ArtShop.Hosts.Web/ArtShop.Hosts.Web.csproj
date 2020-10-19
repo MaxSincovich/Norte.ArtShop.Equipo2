@@ -106,10 +106,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Business\ArtShop.Business\ArtShop.Business.csproj">
-      <Project>{1809C1BC-A45F-4A71-B229-A529689EE4B4}</Project>
-      <Name>ArtShop.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Data\ArtShop.Data\ArtShop.Data.csproj">
       <Project>{E8756EC0-B6DA-4513-8B62-F694CDD132A3}</Project>
       <Name>ArtShop.Data</Name>
@@ -119,20 +115,16 @@
       <Name>ArtShop.Services.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\ArtShop.Services.Http\ArtShop.Services.Http.csproj">
-      <Project>{4197E021-8B04-42BE-8483-EC5CFC7EB4C9}</Project>
+      <Project>{4197e021-8b04-42be-8483-ec5cfc7eb4c9}</Project>
       <Name>ArtShop.Services.Http</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\ArtShop.Services\ArtShop.Services.csproj">
-      <Project>{2477C2B7-82D1-40AA-B8A7-5385A9B7065D}</Project>
+      <Project>{2477c2b7-82d1-40aa-b8a7-5385a9b7065d}</Project>
       <Name>ArtShop.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Shared\ArtShop.Entities\ArtShop.Entities.csproj">
       <Project>{549B3D8D-7C35-4F25-92E6-DF9D195310E0}</Project>
       <Name>ArtShop.Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Shared\ArtShop.Framework\ArtShop.Framework.csproj">
-      <Project>{284623C1-00DD-42B3-A85D-7BE5A9686D83}</Project>
-      <Name>ArtShop.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

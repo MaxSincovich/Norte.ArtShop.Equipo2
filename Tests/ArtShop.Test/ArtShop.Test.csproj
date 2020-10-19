@@ -71,10 +71,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Business\ArtShop.Business\ArtShop.Business.csproj">
-      <Project>{1809C1BC-A45F-4A71-B229-A529689EE4B4}</Project>
-      <Name>ArtShop.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Shared\ArtShop.Entities\ArtShop.Entities.csproj">
       <Project>{549B3D8D-7C35-4F25-92E6-DF9D195310E0}</Project>
       <Name>ArtShop.Entities</Name>

@@ -109,10 +109,6 @@
       <Project>{549B3D8D-7C35-4F25-92E6-DF9D195310E0}</Project>
       <Name>ArtShop.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Shared\ArtShop.Framework\ArtShop.Framework.csproj">
-      <Project>{284623C1-00DD-42B3-A85D-7BE5A9686D83}</Project>
-      <Name>ArtShop.Framework</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010031459362_InitialMigrationCreateEquipo2.resx">

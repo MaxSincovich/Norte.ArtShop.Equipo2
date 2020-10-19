@@ -8,26 +8,28 @@ using System.Threading.Tasks;
 
 namespace ArtShop.UI.Process
 {
-    public class ArtistaProcess
+    public class ArtistaProcess : ProcessComponent
     {
-        private ArtistBusiness bis = new ArtistBusiness();
-        public List<Artist> GetAll()
+        public List<Artist> List()
         {
-            return bis.GetArtist();
+            var response = HttpGet<List<Artist>>("api/artist/listar", new Dictionary<string, object>(), MediaType.Json);
+            return response;
         }
         public Artist Get(int id)
         {
-            return bis.GetById(id);
+            var response = HttpGet<Artist>("api/artist/buscar",new List<object>() {id}, MediaType.Json);
+            return response;
         }
 
-        public Artist Set(Artist artist)
+        public Artist Add(Artist artist)
         {
-            return bis.Create(artist);
+            var response = HttpPost<Artist>("api/artist/agregar", artist, MediaType.Json);
+            return response;
         }
 
         public void Edit(Artist artist)
         {
-            bis.EditArtist(artist);
+            HttpPost<Artist>("api/artist/editar", artist, MediaType.Json);
         }
 
     }
