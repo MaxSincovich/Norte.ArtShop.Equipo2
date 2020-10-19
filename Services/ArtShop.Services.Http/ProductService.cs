@@ -1,33 +1,35 @@
+﻿using ArtShop.Business;
+using ArtShop.Entities.Model;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Http;
-using ArtShop.Entities.Model;
-using ArtShop.Business;
 
-namespace Artshop.Services.Http
+namespace ArtShop.Services.Http
 {
     /// <summary>
     /// 
     /// </summary>
-    [RoutePrefix("api/Artist")]
-    public class ArtistService : ApiController
+    [RoutePrefix("api/Product")]
+    public class ProductService
     {
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="artist"> </param>
+        /// <param name="product"> </param>
         /// <returns></returns>
         [HttpPost]
         [Route("Agregar")]
-        public Artist Add(Artist artist)
+        public Product Add(Product product)
         {
             try
             {
-                var bc = new ArtistBusiness();
-                return bc.Create(artist);
+                var bc = new ProductBusiness();
+                return bc.Create(product);
             }
             catch (Exception ex)
             {
@@ -36,7 +38,6 @@ namespace Artshop.Services.Http
                     StatusCode = (HttpStatusCode)422,
                     ReasonPhrase = ex.Message
                 };
-
                 throw new HttpResponseException(httpError);
             }
         }
@@ -44,15 +45,15 @@ namespace Artshop.Services.Http
         /// <summary>
         ///
         /// </summary>
-        /// <param name="artist"> </param>
+        /// <param name="product"> </param>
         [HttpPut]
         [Route("Editar")]
-        public void Edit(Artist artist)
+        public void Edit(Product product)
         {
             try
             {
-                var bc = new ArtistBusiness();
-                bc.EditArtist(artist);
+                var bc = new ProductBusiness();
+                bc.EditProduct(product);
             }
             catch (Exception ex)
             {
@@ -74,11 +75,11 @@ namespace Artshop.Services.Http
         /// <returns></returns>
         [HttpGet]
         [Route("Buscar")]
-        public Artist Find(int id)
+        public Product Find(int id)
         {
             try
             {
-                var bc = new ArtistBusiness();
+                var bc = new ProductBusiness();
                 return bc.GetById(id);
             }
             catch (Exception ex)
@@ -99,12 +100,12 @@ namespace Artshop.Services.Http
         /// <returns></returns>
         [HttpGet]
         [Route("Listar")]
-        public List<Artist> List()
+        public List<Product> List()
         {
             try
             {
-                var bc = new ArtistBusiness();
-                return bc.GetArtist();
+                var bc = new ProductBusiness();
+                return bc.GetProducts();
             }
             catch (Exception ex)
             {
@@ -127,7 +128,7 @@ namespace Artshop.Services.Http
         {
             try
             {
-                var bc = new ArtistBusiness();
+                var bc = new ProductBusiness();
                 bc.Delete(id);
             }
             catch (Exception ex)
@@ -143,4 +144,3 @@ namespace Artshop.Services.Http
         }
     }
 }
-
