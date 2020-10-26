@@ -15,7 +15,7 @@ namespace ArtShop.Services.Http
     /// 
     /// </summary>
     [RoutePrefix("api/Product")]
-    public class ProductService
+    public class ProductService : ApiController
     {
         /// <summary>
         /// 
@@ -36,7 +36,7 @@ namespace ArtShop.Services.Http
                 var httpError = new HttpResponseMessage()
                 {
                     StatusCode = (HttpStatusCode)422,
-                    ReasonPhrase = ex.Message
+                    ReasonPhrase = ex.Message+"+"+ex.InnerException
                 };
                 throw new HttpResponseException(httpError);
             }

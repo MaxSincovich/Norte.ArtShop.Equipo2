@@ -14,8 +14,8 @@ namespace ArtShop.Data
         public Artist Create(Artist artist)
         {
             const string SQL_STATEMENT =
-                "INSERT INTO dbo.Artist ([FirstName], [LastName], [LifeSpan], [Country], [Description], [TotalProducts]) " +
-                "VALUES(@FirstName, @LastName, @Country, @Country, @Description, @TotalProducts); SELECT SCOPE_IDENTITY();";
+                "INSERT INTO dbo.Artist ([FirstName], [LastName], [LifeSpan], [Country], [Description], [TotalProducts], CreatedOn, CreatedBy, ChangedOn, ChangedBy ) " +
+                "VALUES(@FirstName, @LastName,@LifeSpan, @Country, @Description, @TotalProducts, @CreatedOn, @CreatedBy, @ChangedOn, @ChangedBy); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
@@ -26,6 +26,11 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@Country", DbType.String, artist.Country);
                 db.AddInParameter(cmd, "@Description", DbType.String, artist.Description);
                 db.AddInParameter(cmd, "@TotalProducts", DbType.Int32, artist.TotalProducts);
+
+                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime, artist.CreatedOn != DateTime.MinValue ? artist.CreatedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@CreatedBy", DbType.String, String.IsNullOrEmpty(artist.CreatedBy)? "ApiUser" : artist.CreatedBy);
+                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime, artist.ChangedOn != DateTime.MinValue ? artist.CreatedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@ChangedBy", DbType.String, String.IsNullOrEmpty(artist.ChangedBy) ? "ApiUser" : artist.ChangedBy);
 
                 artist.Id = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
