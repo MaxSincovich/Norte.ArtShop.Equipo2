@@ -41,7 +41,7 @@ namespace ArtShop.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
-
+        
         /// <summary>
         ///
         /// </summary>
@@ -74,7 +74,7 @@ namespace ArtShop.Services.Http
         /// <param name="id"> </param>
         /// <returns></returns>
         [HttpGet]
-        [Route("Buscar")]
+        [Route("Buscar/{id}")]
         public Product Find(int id)
         {
             try
