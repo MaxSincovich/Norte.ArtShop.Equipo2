@@ -13,7 +13,7 @@ namespace ArtShop.UI.Web.Controllers
 
         public ActionResult Index()
         {
-            var lista = productProcess.GetAll();
+            var lista = productProcess.List();
             return View(lista);
         }
     }

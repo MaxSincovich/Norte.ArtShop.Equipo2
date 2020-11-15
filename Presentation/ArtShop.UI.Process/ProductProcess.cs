@@ -8,26 +8,29 @@ using System.Threading.Tasks;
 
 namespace ArtShop.UI.Process
 {
-    public class ProductProcess
+    public class ProductProcess : ProcessComponent
     {
-        private ProductBusiness bis = new ProductBusiness();
-        public List<Product> GetAll()
+
+        public List<Product> List()
         {
-            return bis.GetProducts();
+            var response = HttpGet<List<Product>>("api/product/listar", new Dictionary<string, object>(), MediaType.Json);
+            return response;
         }
         public Product Get(int id)
         {
-            return bis.GetById(id);
+            var response = HttpGet<Product>("api/product/buscar", new List<object>() { id }, MediaType.Json);
+            return response;
         }
 
-        public Product Create(Product product)
+        public Product Add(Product product)
         {
-            return bis.Create(product);
+            var response = HttpPost<Product>("api/product/agregar", product, MediaType.Json);
+            return response;
         }
 
-        public Product Edit(Product product)
+        public void Edit(Product product)
         {
-            return bis.EditProduct(product);
+            HttpPost<Product>("api/product/editar", product, MediaType.Json);
         }
     }
 }
