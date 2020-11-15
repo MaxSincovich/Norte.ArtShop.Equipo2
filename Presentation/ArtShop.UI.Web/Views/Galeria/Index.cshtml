@@ -79,15 +79,17 @@
             <ul class="portfolio-items col-3 isotope fade-up">
                 @foreach (var product in Model)
                 {
-                    <li class="portfolio-item apps isotope-item">
-                        <div class="item-inner">
-                            <img src="~/images/Obras/@product.Image" alt="http://placehold.it/800x600">
-                            <h5>@product.Title</h5>
-                            <div class="overlay">
-                                <a class="preview btn btn-outlined btn-primary" href="~/images/Obras/@product.Image" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-                            </div>
+                <li class="portfolio-item apps isotope-item">
+                    <div class="item-inner">
+                        <img src="~/images/Obras/@product.Image" alt="http://placehold.it/800x600">
+                        <h5>@product.Title</h5>
+                        <h5>$@product.Price</h5>
+                        <div class="overlay">
+                            <a class="preview btn btn-outlined btn-primary" href="~/images/Obras/@product.Image" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
                         </div>
-                    </li>
+                    </div>                    
+                    <button onclick="EviarAlCarro(@product.Id)" type="button">Agregar al carro </button>
+                </li>
                         }
                 </ul>
 
@@ -258,3 +260,18 @@
 <script src="js/jquery.prettyPhoto.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/init.js"></script>
+<script>
+
+    function EviarAlCarro(id){        
+        $.ajax({
+            type: "POST",
+            url: "/Galeria/AddCart/" + id,
+            data: null,
+            success: function (datos) {
+                location.reload();
+            }
+            //dataType: dataType
+        });
+
+    }
+</script>
