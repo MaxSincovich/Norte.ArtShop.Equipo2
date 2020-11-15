@@ -1,8 +1,8 @@
-﻿using ArtShop.Entities.Entities;
-using System;
+﻿using System;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+using ArtShop.Entities.Model;
 using ArtShop.Services;
 
 namespace ArtShop.UI.Web.Controllers
@@ -13,12 +13,12 @@ namespace ArtShop.UI.Web.Controllers
 
         public ActionResult Login()
         {
-            return View(new SEC_User());
+            return View(new Users());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(SEC_User user)
+        public ActionResult Login(Users user)
         {
             try
             {
@@ -40,9 +40,9 @@ namespace ArtShop.UI.Web.Controllers
                   }
                   */
                 var psw = "Metodo Que va a la bd a buscar el password de usuario";
-                if (psw == user.Password)
+                if (psw == user.Contraseña)
                 {
-                    FormsAuthentication.SetAuthCookie(user.UserName, false);
+                    FormsAuthentication.SetAuthCookie(user.NombreUsuario, false);
                     return RedirectToAction("Index", "Home");
                 }
 

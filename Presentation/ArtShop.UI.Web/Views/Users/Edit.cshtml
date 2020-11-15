@@ -1,0 +1,115 @@
+﻿@model ArtShop.Entities.Model.Users
+
+@{
+    ViewBag.Title = "Edición de usuario";
+}
+
+
+<div id="content-wrapper">
+    <section id="contact" class="white">
+        <div class="container">
+
+        
+            <h2>Edición de usuario</h2>
+            <hr />
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+                    
+
+                    <div class="form-group">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.IdUsuario)
+                            @Html.EditorFor(model => model.IdUsuario, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.IdUsuario, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group col-md-6">
+
+                            @Html.LabelFor(model => model.NombreUsuario)
+                            @Html.EditorFor(model => model.NombreUsuario, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.NombreUsuario, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group col-md-6">
+
+                            @Html.LabelFor(model => model.Contraseña)
+                            @Html.EditorFor(model => model.Contraseña, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Contraseña, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group col-md-6">
+
+                            @Html.LabelFor(model => model.Nombre)
+                            @Html.EditorFor(model => model.Nombre, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group col-md-6">
+
+                            @Html.LabelFor(model => model.Apellido)
+                            @Html.EditorFor(model => model.Apellido, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.Apellido, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group col-md-6">
+
+                            @Html.LabelFor(model => model.DNI)
+                            @Html.EditorFor(model => model.DNI, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.DNI, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group col-md-6">
+
+                            @Html.LabelFor(model => model.FechaNacimiento)
+                            @Html.EditorFor(model => model.FechaNacimiento, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group col-md-6">
+
+                            @Html.LabelFor(model => model.FechaCreacion)
+                            @Html.EditorFor(model => model.FechaCreacion, new {htmlAttributes = new {@class = "form-control"}})
+                            @Html.ValidationMessageFor(model => model.FechaCreacion, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group col-md-6">
+                            @Html.Label("Tipo de Usuario")
+                            @Html.DropDownList("IdTipoUsuario", (IEnumerable<SelectListItem>) ViewData["IdTipoDeUsuarios"], "Seleccione...", htmlAttributes: new {@class = "selectpicker form-control", @data_live_search = "true"})
+                            @Html.ValidationMessageFor(model => model.IdTipoUsuario, "", new {@class = "text-danger"})
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Guardar" class="btn btn-success"/>
+                            @Html.ActionLink("Volver", "Index", null, null, new {@class = "btn btn-danger"})
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div><!-- col -->
+    </section>
+</div>

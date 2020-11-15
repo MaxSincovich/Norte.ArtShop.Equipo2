@@ -57,7 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\SEC_User.cs" />
     <Compile Include="Model\Artist.cs" />
     <Compile Include="Model\Cart.cs" />
     <Compile Include="Model\CartItem.cs" />
@@ -72,11 +71,15 @@
     <Compile Include="Model\Metadata\OrderNumberMetadata.cs" />
     <Compile Include="Model\Metadata\ProductMetadata.cs" />
     <Compile Include="Model\Metadata\RatingMetadata.cs" />
+    <Compile Include="Model\Metadata\UserMetadata.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderDetail.cs" />
     <Compile Include="Model\OrderNumber.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Rating.cs" />
+    <Compile Include="Model\SEC_User.cs" />
+    <Compile Include="Model\TipoUsuarios.cs" />
+    <Compile Include="Model\Users.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -91,6 +94,9 @@
   <ItemGroup>
     <Content Include="bin\x86\Debug\ArtShop.Entities.dll" />
     <Content Include="bin\x86\Debug\ArtShop.Entities.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

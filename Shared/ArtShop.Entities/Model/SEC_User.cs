@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ArtShop.Entities.Entities
+namespace ArtShop.Entities.Model
 {
     public class SEC_User
     {
-        public System.Guid Id { get; set; }
+        public int Id { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Mail { get; set; }
         public string Name { get; set; }
-        public System.DateTime CreationDate { get; set; }
+        public DateTime CreationDate { get; set; }
         public bool IsActive { get; set; }
     }
 }
