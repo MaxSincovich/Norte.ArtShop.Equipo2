@@ -2,7 +2,7 @@
     ViewBag.Title = "Login";
 }
 
-@model ArtShop.Entities.Entities.SEC_User
+@model ArtShop.Entities.Model.Users
 
 
 <div class="container" style="padding-top:5%">
@@ -26,11 +26,11 @@
                             {
                                 @Html.AntiForgeryToken()
 
-                                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @placeholder = "Usuario", @required = true } });
+                                @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @placeholder = "Usuario", @required = true } });
 
                                 <br /><br />
 
-                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @placeholder = "Password", @required = true } });
+                                @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @placeholder = "Password", @required = true } });
 
                                 <br /><br />
                                 if (ViewBag.ErrorMessage != null)

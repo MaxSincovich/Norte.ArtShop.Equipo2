@@ -54,5 +54,10 @@ namespace ArtShop.Business
             return TuserDac.GetTipoUsuarios();
         }
 
+        public Users Login (Users users)
+        {
+            var userDac = new UsersDAC();
+            return userDac.Login(users.NombreUsuario, users.Contraseña);
+        }
     }
 }

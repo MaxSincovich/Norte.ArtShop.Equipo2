@@ -156,7 +156,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\Pe-icon-7-stroke.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="images\Artistas\GustavoLoza.jpg" />
     <Content Include="images\Artistas\MonikaWaraxa.jpg" />
     <Content Include="images\Artistas\SylvieFage.jpg" />
@@ -261,6 +260,7 @@
     <Content Include="Views\Users\Delete.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Account\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -272,7 +272,6 @@
     <Folder Include="images\prettyPhoto\facebook\" />
     <Folder Include="images\prettyPhoto\light_rounded\" />
     <Folder Include="images\prettyPhoto\light_square\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
