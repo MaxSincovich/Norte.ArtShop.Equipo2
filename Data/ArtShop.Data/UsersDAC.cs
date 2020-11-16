@@ -108,6 +108,33 @@ namespace ArtShop.Data
             return user;
         }
 
+        public Users Login(string usr, string psw)
+        {
+            const string SQL_STATEMENT =
+                "SELECT [IdUsuario], [NombreUsuario], [Contraseña], [Nombre], [Apellido],[DNI], [FechaNacimiento], [FechaCreacion], IdTipoUsuario " +
+                "FROM dbo.Users " +
+                "WHERE [NombreUsuario]=@usr AND [Contraseña]= @psw ";
+
+            Users user = null;
+
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            {
+                db.AddInParameter(cmd, "@usr", DbType.String, usr);
+                db.AddInParameter(cmd, "@psw", DbType.String, psw);
+
+                using (IDataReader dr = db.ExecuteReader(cmd))
+                {
+                    if (dr.Read())
+                    {
+                        user = LoadUser(dr);
+                    }
+                }
+            }
+
+            return user;
+        }
+
 
         public List<Users> Select()
         {

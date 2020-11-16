@@ -4,16 +4,19 @@ using System.Web.Mvc;
 using System.Web.Security;
 using ArtShop.Entities.Model;
 using ArtShop.Services;
+using ArtShop.UI.Process;
 
 namespace ArtShop.UI.Web.Controllers
 
 {
     public class AccountController : Controller
     {
+        UsersProcess uP = new UsersProcess();
 
         public ActionResult Login()
         {
-            return View(new Users());
+            //return View(new Users());
+            return View();
         }
 
         [HttpPost]
@@ -39,14 +42,22 @@ namespace ArtShop.UI.Web.Controllers
                       sc = null;
                   }
                   */
-                var psw = "Metodo Que va a la bd a buscar el password de usuario";
-                if (psw == user.Contraseña)
-                {
-                    FormsAuthentication.SetAuthCookie(user.NombreUsuario, false);
-                    return RedirectToAction("Index", "Home");
-                }
 
-                ViewBag.ErrorMessage = "Los datos ingresados no son correctos";
+                var userdb = uP.LogIn(user);
+
+                if (userdb == null)
+                {
+                    ViewBag.ErrorMessage = "Los datos ingresados no son correctos";
+                }
+                else
+                {
+                    if (userdb.Contraseña == user.Contraseña || userdb.NombreUsuario == user.NombreUsuario)
+                    {
+                        FormsAuthentication.SetAuthCookie(user.NombreUsuario, false);
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                //var psw = "Metodo Que va a la bd a buscar el password de usuario";       
                 return View(user);
             }
             catch (Exception ex)
