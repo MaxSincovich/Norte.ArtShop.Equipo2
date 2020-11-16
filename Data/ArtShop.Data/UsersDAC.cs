@@ -14,6 +14,7 @@ namespace ArtShop.Data
     {
         public Users Create(Users user)
         {
+            user.IdTipoUsuario = 1;
             const string SQL_STATEMENT =
                 "INSERT INTO dbo.Users ([NombreUsuario], [Contraseña], [Nombre], [Apellido],[DNI], [FechaNacimiento], [FechaCreacion], IdTipoUsuario) " +
                 "VALUES(@NombreUsuario, @Contraseña,@Nombre, @Apellido, @DNI, @FechaNacimiento, @FechaCreacion, @IdTipoUsuario); SELECT SCOPE_IDENTITY();";
@@ -25,7 +26,7 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@Contraseña", DbType.String, user.Contraseña);
                 db.AddInParameter(cmd, "@Nombre", DbType.String, user.Nombre);
                 db.AddInParameter(cmd, "@Apellido", DbType.String, user.Apellido );
-                db.AddInParameter(cmd, "@DNI", DbType.String, user.DNI);
+                db.AddInParameter(cmd, "@DNI", DbType.String, user.DNI ?? "1");
                 db.AddInParameter(cmd, "@FechaNacimiento", DbType.DateTime, user.FechaNacimiento != DateTime.MinValue ? user.FechaNacimiento : DateTime.Now);
                 db.AddInParameter(cmd, "@FechaCreacion", DbType.DateTime, user.FechaCreacion != DateTime.MinValue ? user.FechaCreacion : DateTime.Now);
                 db.AddInParameter(cmd, "@IdTipoUsuario", DbType.Int32, user.IdTipoUsuario);
@@ -95,6 +96,33 @@ namespace ArtShop.Data
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@Id", DbType.Int32, id);
+
+                using (IDataReader dr = db.ExecuteReader(cmd))
+                {
+                    if (dr.Read())
+                    {
+                        user = LoadUser(dr);
+                    }
+                }
+            }
+
+            return user;
+        }
+
+        public Users Login(string usr, string psw)
+        {
+            const string SQL_STATEMENT =
+                "SELECT [IdUsuario], [NombreUsuario], [Contraseña], [Nombre], [Apellido],[DNI], [FechaNacimiento], [FechaCreacion], IdTipoUsuario " +
+                "FROM dbo.Users " +
+                "WHERE [NombreUsuario]=@usr AND [Contraseña]= @psw ";
+
+            Users user = null;
+
+            var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
+            using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
+            {
+                db.AddInParameter(cmd, "@usr", DbType.String, usr);
+                db.AddInParameter(cmd, "@psw", DbType.String, psw);
 
                 using (IDataReader dr = db.ExecuteReader(cmd))
                 {

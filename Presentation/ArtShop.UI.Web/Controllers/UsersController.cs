@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using ArtShop.Entities.Model;
 using ArtShop.UI.Process;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ArtShop.UI.Web.Controllers
 {

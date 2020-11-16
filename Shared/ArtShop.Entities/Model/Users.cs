@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 namespace ArtShop.Entities.Model
 {
     [Serializable]
-    public partial class Users
+    public partial class Users : IdentityUser
     {
         public int IdUsuario { get; set; }
         public string NombreUsuario { get; set; }

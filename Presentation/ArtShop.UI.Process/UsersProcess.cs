@@ -21,9 +21,9 @@ namespace ArtShop.UI.Process
             return uBis.Get(id);
         }
 
-        public Users Create(Users product)
+        public Users Create(Users users)
         {
-            return uBis.Create(product);
+            return uBis.Create(users);
         }
 
         public void Update(Users user)
@@ -39,6 +39,11 @@ namespace ArtShop.UI.Process
         public List<TipoUsuarios> GetTipoUsuarios()
         {
             return uBis.GetTipoUsuarios();
+        }
+
+        public Users LogIn(Users user)
+        {
+            return uBis.Login(user);
         }
 
     }
