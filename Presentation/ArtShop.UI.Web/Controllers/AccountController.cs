@@ -13,9 +13,9 @@ namespace ArtShop.UI.Web.Controllers
     {
         UsersProcess uP = new UsersProcess();
 
+        [HttpGet]
         public ActionResult Login()
         {
-            //return View(new Users());
             return View();
         }
 
@@ -42,7 +42,6 @@ namespace ArtShop.UI.Web.Controllers
                       sc = null;
                   }
                   */
-
                 var userdb = uP.LogIn(user);
 
                 if (userdb == null)
@@ -67,16 +66,33 @@ namespace ArtShop.UI.Web.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Registro()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Registro(Users user)
+        {
+            try
+            {
+                var userdb = uP.Create(user);
+
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "Error en el registro.";
+                return View(user);
+            }
+        }
+
         [Authorize]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
-
-
-
-
-
     }
 }
