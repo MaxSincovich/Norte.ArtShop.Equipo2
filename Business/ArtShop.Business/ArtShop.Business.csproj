@@ -52,7 +52,7 @@
       <Name>ArtShop.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Shared\ArtShop.Entities\ArtShop.Entities.csproj">
-      <Project>{549B3D8D-7C35-4F25-92E6-DF9D195310E0}</Project>
+      <Project>{549b3d8d-7c35-4f25-92e6-df9d195310e0}</Project>
       <Name>ArtShop.Entities</Name>
     </ProjectReference>
   </ItemGroup>

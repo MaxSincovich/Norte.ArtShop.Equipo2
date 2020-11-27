@@ -41,6 +41,11 @@
                     <li>@Html.ActionLink("Galeria", "Index", "Galeria")</li>
                     <li>@Html.ActionLink("Artista", "Index", "Artista")</li>
                     <li>@Html.ActionLink("Ingresar", "Login", "Account")</li>
+                    
+                    @if (this.User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Ingresar", "Login", "Account")</li>
+                    }
 
 
                     @*<li class="dropdown active">
