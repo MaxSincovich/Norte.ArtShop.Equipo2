@@ -14,9 +14,16 @@ namespace ArtShop.UI.Web.Controllers
 
         public Cart GetCar()
         {
-            var id = Session["Cart"].ToString().Split('|');
-            return CartProcess.Get(Convert.ToInt32(id));
+            var id = System.Web.HttpContext.Current.Session["Cart"].ToString().Split('|');
+            return CartProcess.Get(Convert.ToInt32(id[1]));
         }
+
+        //public List<CartItem> GetCar()
+        //{
+        //    var id = Session["Cart"].ToString().Split('|');
+        //    return CartProcess.Get(Convert.ToInt32(id[1]));
+        //}
+
         public Cart AddCart(List<CartItem> cartItem)
         {
 
@@ -38,7 +45,8 @@ namespace ArtShop.UI.Web.Controllers
             };
             var CartResult = CartProcess.Add(_car);
             if (CartResult != null)
-                Session["Cart"] = cartCookie.Value + "|" + CartResult.Id;
+
+                System.Web.HttpContext.Current.Session["Cart"] = cartCookie.Value + "|" + CartResult.Id;
             return CartResult;
         }
     }

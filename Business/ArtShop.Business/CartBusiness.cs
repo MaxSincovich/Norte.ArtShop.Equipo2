@@ -11,11 +11,15 @@ namespace ArtShop.Business
     public class CartBusiness
     {
         private BaseDataService<Cart> db = new BaseDataService<Cart>();
-        public List<Cart> GetProducts()
+        public List<Cart> GeCart()
         {
             return db.Get();
         }
-        public Cart EditProduct(Cart cart)
+        public Cart GetCartbyCookie(string cookie)
+        {
+            return db.Get(c=>c.Cookie == cookie).FirstOrDefault();
+        }
+        public Cart EditCart(Cart cart)
         {
             return db.Update(cart, cart.Id);
         }

@@ -28,5 +28,12 @@ namespace ArtShop.UI.Process
         {
             HttpPost<CartItem>("api/CartItem/editar", cartItem, MediaType.Json);
         }
+
+        public List<CartItem> GetbyCartId( int cartId)
+        {
+            var response = HttpGet<List<CartItem>>("api/CartItem/BuscarItems", new List<object>() { cartId }, MediaType.Json);
+            //var response = HttpGet<List<Product>>("api/CartItem/BuscarItems", new Dictionary<string, object>(), MediaType.Json);
+            return response;
+        }
     }
 }

@@ -23,7 +23,7 @@
     @Styles.Render("~/Content/css")
 </head>
 
-<body>
+<body onload="getInfoCart();">
     <header class="navbar navbar-inverse navbar-fixed-top " role="banner">
         <div class="container">
             <div class="navbar-header">
@@ -41,7 +41,7 @@
                     <li>@Html.ActionLink("Galeria", "Index", "Galeria")</li>
                     <li>@Html.ActionLink("Artista", "Index", "Artista")</li>
                     <li>@Html.ActionLink("Ingresar", "Login", "Account")</li>
-                    
+
                     @if (this.User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("Ingresar", "Login", "Account")</li>
@@ -49,22 +49,22 @@
 
 
                     @*<li class="dropdown active">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mas <i class="icon-angle-down"></i></a>
-            <ul class="dropdown-menu">
-                <li><a href="project-item.html">Carrito De Compras</a></li>
-                <li><a href="blog-item.html">Iniciar Sesion</a></li>
-                <li><a href="404.html">Cuenta</a></li>
-            </ul>
-        </li>*@
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mas <i class="icon-angle-down"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="project-item.html">Carrito De Compras</a></li>
+                                <li><a href="blog-item.html">Iniciar Sesion</a></li>
+                                <li><a href="404.html">Cuenta</a></li>
+                            </ul>
+                        </li>*@
                     @*<li><span class="search-trigger"><i class="fa fa-search"></i></span></li>*@
-                    <li><span class="search-trigger"><i class="fa fa-shopping-cart"></i></span></li>
+                <li><span class="search-trigger"><i class="fa fa-shopping-cart" id="shoppingCart"></i></span></li>
                     @*<li><span class="search-trigger"><i class="fa fa-user"> </i></span></li>*@
                 </ul>
             </div>
         </div>
     </header><!--/header-->
 
-        @RenderBody()
+    @RenderBody()
 
     <div id="footer-wrapper">
         <section id="bottom" class="">
@@ -142,5 +142,23 @@
 
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/modernizr")
+
+    <script>
+        function getInfoCart() {
+            $.ajax({
+                type: "POST",
+                url: "/CartItem/Getcount/",
+                data: null,
+                success: function (datos) {
+                    if (datos != "0")
+                        $("#shoppingCart").html(" "+datos)
+                }               
+            });
+
+        }
+        $("#shoppingCart").click(function () {
+            window.location = "/Carrito/";
+        });
+    </script>
 </body>
 </html>

@@ -64,6 +64,7 @@ namespace ArtShop.Data
         {
             return _db.Set<T>().SingleOrDefault(x => x.Id == id);
         }
+       
 
         public virtual T Update(T entity, object key)
         {
