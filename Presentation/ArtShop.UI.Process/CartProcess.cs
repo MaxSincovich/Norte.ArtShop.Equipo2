@@ -28,5 +28,11 @@ namespace ArtShop.UI.Process
         {
             HttpPost<Cart>("api/Cart/editar", cart, MediaType.Json);
         }
+
+        public Cart GetbyCookie(string cookie)
+        {
+            var response = HttpGet<Cart>("api/Cart/BuscarxCookie", new List<object>() { cookie }, MediaType.Json);
+            return response;
+        }
     }
 }

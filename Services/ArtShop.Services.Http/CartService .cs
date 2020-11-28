@@ -48,7 +48,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new CartBusiness();
-                bc.EditProduct(cart);
+                bc.EditCart(cart);
             }
             catch (Exception ex)
             {
@@ -69,13 +69,34 @@ namespace ArtShop.Services.Http
         /// <param name="id"> </param>
         /// <returns></returns>
         [HttpGet]
-        [Route("Buscar")]
+        [Route("Buscar/{id}")]
         public Cart Find(int id)
         {
             try
             {
                 var bc = new CartBusiness();
                 return bc.GetById(id);
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+
+                throw new HttpResponseException(httpError);
+            }
+        }
+
+        [HttpGet]
+        [Route("BuscarxCookie/{cookie}")]
+        public Cart FindbyCookie(string cookie)
+        {
+            try
+            {
+                var bc = new CartBusiness();
+                return bc.GetCartbyCookie(cookie);
             }
             catch (Exception ex)
             {

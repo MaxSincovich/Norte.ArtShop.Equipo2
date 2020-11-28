@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace ArtShop.UI.Web.Controllers
 {
-    public class GaleriaController:Controller
+    public class GaleriaController : Controller
     {
         //public ActionResult Index()
         //{
@@ -16,6 +16,7 @@ namespace ArtShop.UI.Web.Controllers
         //}
         ProductProcess productProcess = new ProductProcess();
         protected CartController cartController = new CartController();
+        protected CartItemController cartItemController = new CartItemController();
 
 
         public ActionResult Index()
@@ -31,23 +32,27 @@ namespace ArtShop.UI.Web.Controllers
             var cartResult = new Cart();
             var carItem = new CartItem();
             var listCarItem = new List<CartItem>();
-            if(Session["Cart"]== null  || String.IsNullOrEmpty(Session["Cart"].ToString()))
-            {
 
-                carItem.ProductId = product.Id;
-                carItem.Price = product.Price;
-                carItem.Quantity = 1;
-                carItem.ChangedBy = "admin";
-                carItem.ChangedOn = DateTime.Now;
-                carItem.CreatedOn = DateTime.Now;                
-                listCarItem.Add(carItem);
+
+            carItem.ProductId = product.Id;
+            carItem.Price = product.Price;
+            carItem.Quantity = 1;
+            carItem.ChangedBy = "admin";
+            carItem.ChangedOn = DateTime.Now;
+            carItem.CreatedOn = DateTime.Now;
+            
+            if (Session["Cart"] == null || String.IsNullOrEmpty(Session["Cart"].ToString()))
+            {
                 cartResult = cartController.AddCart(listCarItem);
+                carItem.CartId = cartResult.Id;
             }
             else
             {
                 cartResult = cartController.GetCar();
+                carItem.CartId = cartResult.Id;
             }
-
+            listCarItem.Add(carItem);
+            listCarItem = cartItemController.AddCart(listCarItem);
             return Json(cartResult, JsonRequestBehavior.AllowGet);
         }
     }

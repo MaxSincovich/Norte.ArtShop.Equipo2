@@ -88,5 +88,26 @@ namespace ArtShop.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
+
+        [HttpGet]
+        [Route("BuscarItems/{idCart}")]
+        public List<CartItem> FindItems(int idCart)
+        {
+            try
+            {
+                var bc = new CartItemBusiness();
+                return bc.GetByIdCart(idCart);
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+
+                throw new HttpResponseException(httpError);
+            }
+        }
     }
 }

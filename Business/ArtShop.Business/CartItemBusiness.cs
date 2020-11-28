@@ -23,11 +23,16 @@ namespace ArtShop.Business
         {
             return db.GetById(id);
         }
+
+        public List<CartItem> GetByIdCart(int idCart)
+        {
+            return db.Get(c => c.CartId == idCart);
+        }
         public CartItem Create(CartItem cartItem)
         {
             return db.Create(cartItem);
         }
-        public void Delete (int id)
+        public void Delete(int id)
         {
             db.Delete(id);
         }
