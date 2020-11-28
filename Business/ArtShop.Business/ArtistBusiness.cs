@@ -47,6 +47,13 @@ namespace ArtShop.Business
             var artistDAC = new ArtistDAC();
             artistDAC.DeleteById(id);
         }
+
+
+        public void AddImage(byte[] imageBytes, string name)
+        {
+            var artistDAC = new ArtistDAC();
+            artistDAC.AddImage(imageBytes,name);
+        }
         //private BaseDataService<Artist> db = new BaseDataService<Artist>();
         //public List<Artist> GetArtist()
         //{

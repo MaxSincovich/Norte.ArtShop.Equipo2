@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +12,7 @@ namespace ArtShop.Entities.Model
 {
     public class IdentityBase
     {
+        [DataMember]
         [Key]
         public int Id { get; set; }
 

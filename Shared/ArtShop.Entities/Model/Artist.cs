@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 
@@ -22,6 +23,10 @@ namespace ArtShop.Entities.Model
         {
             this.Product = new HashSet<Product>();
         }
+
+        [DataMember]
+        public int Id { get; set; }
+
         [DataMember]
         public string FirstName { get; set; }
 
