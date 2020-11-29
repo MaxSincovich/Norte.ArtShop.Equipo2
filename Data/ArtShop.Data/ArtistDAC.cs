@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.IO;
 
 
 namespace ArtShop.Data
@@ -54,13 +55,19 @@ namespace ArtShop.Data
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
-                db.AddInParameter(cmd, "@FirstName", DbType.String, artist.FirstName);
-                db.AddInParameter(cmd, "@LastName", DbType.String, artist.LastName);
-                db.AddInParameter(cmd, "@LifeSpan", DbType.String, artist.LifeSpan);
-                db.AddInParameter(cmd, "@Country", DbType.String, artist.Country);
-                db.AddInParameter(cmd, "@Description", DbType.String, artist.Description);
+                db.AddInParameter(cmd, "@FirstName", DbType.String, string.IsNullOrEmpty(artist.FirstName) ? "" : artist.FirstName);
+                db.AddInParameter(cmd, "@LastName", DbType.String, string.IsNullOrEmpty(artist.LastName) ? "" : artist.LastName);
+                db.AddInParameter(cmd, "@LifeSpan", DbType.String, string.IsNullOrEmpty(artist.LifeSpan) ? "" : artist.LifeSpan);
+                db.AddInParameter(cmd, "@Country", DbType.String, string.IsNullOrEmpty(artist.Country) ? "" : artist.Country);
+                db.AddInParameter(cmd, "@Description", DbType.String, string.IsNullOrEmpty(artist.Description) ? "" : artist.Description);
                 db.AddInParameter(cmd, "@TotalProducts", DbType.Int32, artist.TotalProducts);
                 db.AddInParameter(cmd, "@Id", DbType.Int32, artist.Id);
+
+                db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime, artist.CreatedOn != DateTime.MinValue ? artist.CreatedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@CreatedBy", DbType.String, String.IsNullOrEmpty(artist.CreatedBy) ? "ApiUser" : artist.CreatedBy);
+                db.AddInParameter(cmd, "@ChangedOn", DbType.DateTime, artist.ChangedOn != DateTime.MinValue ? artist.CreatedOn : DateTime.Now);
+                db.AddInParameter(cmd, "@ChangedBy", DbType.String, String.IsNullOrEmpty(artist.ChangedBy) ? "ApiUser" : artist.ChangedBy);
+
 
                 db.ExecuteNonQuery(cmd);
             }
@@ -129,6 +136,17 @@ namespace ArtShop.Data
             }
 
             return result;
+        }
+
+        public void AddImage(byte[] imageBytes, string name)
+        {
+            using (var ms = new MemoryStream(imageBytes))
+            {
+                using (var fs = new FileStream("/images/" + name, FileMode.Create))
+                {
+                    ms.WriteTo(fs);
+                }
+            }
         }
 
 
