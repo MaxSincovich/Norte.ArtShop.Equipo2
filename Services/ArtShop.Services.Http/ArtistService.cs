@@ -74,7 +74,7 @@ namespace Artshop.Services.Http
         /// <param name="id"> </param>
         /// <returns></returns>
         [HttpGet]
-        [Route("Buscar")]
+        [Route("Buscar/{id}")]
         public Artist Find(int id)
         {
             try
