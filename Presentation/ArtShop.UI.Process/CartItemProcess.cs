@@ -24,14 +24,15 @@ namespace ArtShop.UI.Process
             return response;
         }
 
-        public void Edit(CartItem cartItem)
+        public CartItem Edit(CartItem cartItem)
         {
-            HttpPost<CartItem>("api/CartItem/editar", cartItem, MediaType.Json);
+            var response = HttpPost<CartItem>("api/CartItem/editar", cartItem, MediaType.Json);
+            return response;
         }
 
         public List<CartItem> GetbyCartId( int cartId)
         {
-            var response = HttpGet<List<CartItem>>("api/CartItem/BuscarItems", new List<object>() { cartId }, MediaType.Json);
+            var response = HttpGet<List<CartItem>>($"api/CartItem/BuscarItems/{cartId}", new Dictionary<string, object>(), MediaType.Json);
             //var response = HttpGet<List<Product>>("api/CartItem/BuscarItems", new Dictionary<string, object>(), MediaType.Json);
             return response;
         }

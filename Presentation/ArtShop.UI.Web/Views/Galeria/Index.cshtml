@@ -78,7 +78,8 @@
                         <div class="overlay">
                             <a class="preview btn btn-outlined btn-primary" href="~/images/Obras/@product.Image" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
                         </div>
-                    </div>                    
+                    </div> 
+                    <input  type="number" min="0" max="99" value="1" id="cantidad_@product.Id">
                     <button onclick="EviarAlCarro(@product.Id)" class="btn btn-success"  type="button">Agregar al carro </button>
                 </li>
                         }
@@ -167,11 +168,15 @@
 <script src="js/init.js"></script>
 <script>
 
-    function EviarAlCarro(id){        
+    function EviarAlCarro(id) {
+        var cantidad = $("#cantidad_" + id).val();
         $.ajax({
             type: "POST",
-            url: "/Galeria/AddCart/" + id,
-            data: null,
+            url: "/Galeria/AddCart/",
+            data: {
+                'id': id,
+                'cantidad': cantidad
+            },
             success: function (datos) {
                 location.reload();
             }

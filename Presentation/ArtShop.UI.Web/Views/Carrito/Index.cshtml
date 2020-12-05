@@ -97,7 +97,7 @@
 
                             @foreach (var cartItem in Model)
                             {
-                                totalPrice += @cartItem.Product.Price;
+                                totalPrice += @cartItem.Product.Price * cartItem.Quantity;
                                 <div class="row">
                                     <div class="col-xs-2">
                                         <img class="img-responsive" src="~/images/Obras/@cartItem.Product.Image">
@@ -110,7 +110,7 @@
                                             <h6><strong>$ @cartItem.Product.Price  <span class="text-muted">x</span></strong></h6>
                                         </div>
                                         <div class="col-xs-4">
-                                            <input type="text" class="form-control input-sm" value="1">
+                                            <input readonly="readonly" class="form-control input-sm" value=" @cartItem.Quantity">
                                         </div>
                                         <div class="col-xs-2">
                                             <button type="button" class="btn btn-link btn-xs">
