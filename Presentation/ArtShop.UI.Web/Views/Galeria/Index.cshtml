@@ -74,6 +74,7 @@
 </section><!--/#main-slider-->
 
 <div id="content-wrapper">
+<<<<<<< HEAD
     @*<section id="portfolio" class="white">*@
 
     <div class="gap"></div>
@@ -116,6 +117,33 @@
 
                                 </div>
                             </div>
+=======
+    <section id="portfolio" class="white">
+        <div class="container">
+            <div class="gap"></div>
+            <div class="center gap fade-down section-heading">
+              
+            </div>
+          
+@*--------------------------------------------------------------------------------------*@
+
+
+            <ul class="portfolio-items col-3 isotope fade-up">
+                @foreach (var product in Model)
+                {
+                <li class="portfolio-item apps isotope-item">
+                    <div class="item-inner">
+                        <img src="~/images/Obras/@product.Image" alt="http://placehold.it/800x600">
+                        <h5>@product.Title</h5>
+                        <h5>$@product.Price</h5>
+                        <div class="overlay">
+                            <a class="preview btn btn-outlined btn-primary" href="~/images/Obras/@product.Image" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
+                        </div>
+                    </div> 
+                    <input  type="number" min="0" max="99" value="1" id="cantidad_@product.Id">
+                    <button onclick="EviarAlCarro(@product.Id)" class="btn btn-success"  type="button">Agregar al carro </button>
+                </li>
+>>>>>>> 4c74eb787cf6b636c9a4d55276b89b7460f393ed
                         }
                     </div>
                     <!-- /tab -->
@@ -227,10 +255,17 @@
 <script>
 
     function EviarAlCarro(id) {
+<<<<<<< HEAD
+=======
+        var cantidad = $("#cantidad_" + id).val();
+>>>>>>> 4c74eb787cf6b636c9a4d55276b89b7460f393ed
         $.ajax({
             type: "POST",
-            url: "/Galeria/AddCart/" + id,
-            data: null,
+            url: "/Galeria/AddCart/",
+            data: {
+                'id': id,
+                'cantidad': cantidad
+            },
             success: function (datos) {
                 location.reload();
             }

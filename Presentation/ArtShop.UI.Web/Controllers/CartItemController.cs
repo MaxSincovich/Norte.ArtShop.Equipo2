@@ -16,14 +16,14 @@ namespace ArtShop.UI.Web.Controllers
             var listCartItemResult = new List<CartItem>();
             foreach (var item in ListcartItem)
             {
-               var CartItem = CartItemProcess.Add(item);
+                var CartItem = CartItemProcess.Add(item);
                 listCartItemResult.Add(CartItem);
             }
 
             return ListcartItem;
         }
 
-      
+
 
 
         public int Getcount()
@@ -39,5 +39,13 @@ namespace ArtShop.UI.Web.Controllers
                 return 0;
             }
         }
+
+        [HttpGet]
+        public CartItem getCartItembyProducto(int idProducto, int cartId)
+        {            
+            var cartItem = CartItemProcess.GetbyCartId(cartId).Where(a => a.ProductId == idProducto).FirstOrDefault();            
+            return cartItem;
+        }
+        
     }
 }
