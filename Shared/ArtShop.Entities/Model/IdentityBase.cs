@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace ArtShop.Entities.Model
 {
+    [DataContractAttribute]
     public class IdentityBase
     {
-        [DataMember]
         [Key]
         public int Id { get; set; }
 
