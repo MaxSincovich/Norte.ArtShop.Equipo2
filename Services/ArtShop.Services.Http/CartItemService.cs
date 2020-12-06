@@ -41,14 +41,14 @@ namespace ArtShop.Services.Http
             }
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("Editar")]
-        public void Edit(CartItem cartItem)
+        public CartItem Edit(CartItem cartItem)
         {
             try
             {
                 var bc = new CartItemBusiness();
-                bc.EditProduct(cartItem);
+                return bc.EditProduct(cartItem);
             }
             catch (Exception ex)
             {
