@@ -10,8 +10,8 @@ namespace ArtShop.Entities.Model
     public partial class Users
     {
         [DataMember]
-
         public int IdUsuario { get; set; }
+
         [DataMember]
         public string NombreUsuario { get; set; }
 
@@ -35,6 +35,9 @@ namespace ArtShop.Entities.Model
 
         [DataMember]
         public int IdTipoUsuario { get; set; }
+
+        [DataMember]
+        public string Email { get; set; }
 
     }
 }

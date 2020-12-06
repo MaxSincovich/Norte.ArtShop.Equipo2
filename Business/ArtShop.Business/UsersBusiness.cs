@@ -32,12 +32,12 @@ namespace ArtShop.Business
             return result;
         }
 
-        public Users Create(Users artist)
+        public Users Create(Users user)
         {
             Users result = default(Users);
             var userDac = new UsersDAC();
 
-            result = userDac.Create(artist);
+            result = userDac.Create(user);
             return result;
         }
 

@@ -15,8 +15,8 @@ namespace ArtShop.Data
         public Users Create(Users user)
         {
             const string SQL_STATEMENT =
-                "INSERT INTO dbo.Users ([NombreUsuario], [Contraseña], [Nombre], [Apellido],[DNI], [FechaNacimiento], [FechaCreacion], IdTipoUsuario) " +
-                "VALUES(@NombreUsuario, @Contraseña,@Nombre, @Apellido, @DNI, @FechaNacimiento, @FechaCreacion, @IdTipoUsuario); SELECT SCOPE_IDENTITY();";
+                "INSERT INTO dbo.Users ([NombreUsuario], [Contraseña], [Nombre], [Apellido],[DNI], [FechaNacimiento], [FechaCreacion], IdTipoUsuario, Email) " +
+                "VALUES(@NombreUsuario, @Contraseña, @Nombre, @Apellido, @DNI, @FechaNacimiento, @FechaCreacion, @IdTipoUsuario , @Email); SELECT SCOPE_IDENTITY();";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
@@ -29,6 +29,7 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@FechaNacimiento", DbType.DateTime, user.FechaNacimiento != DateTime.MinValue ? user.FechaNacimiento : DateTime.Now);
                 db.AddInParameter(cmd, "@FechaCreacion", DbType.DateTime, user.FechaCreacion != DateTime.MinValue ? user.FechaCreacion : DateTime.Now);
                 db.AddInParameter(cmd, "@IdTipoUsuario", DbType.Int32, user.IdTipoUsuario);
+                db.AddInParameter(cmd, "@Email", DbType.String, user.Email);
 
                 user.IdUsuario = Convert.ToInt32(db.ExecuteScalar(cmd));
             }
@@ -49,7 +50,7 @@ namespace ArtShop.Data
                     "[FechaNacimiento]=@FechaNacimiento, " +
                     "[FechaCreacion] = @FechaCreacion, "+
                     "[IdTipoUsuario] = @IdTipoUsuario, " +
-                    "[UserName]=@UserName, " +
+                    "[Email] = @Email " +
                 " WHERE [IdUsuario]=@Id ";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
@@ -63,6 +64,7 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@FechaNacimiento", DbType.DateTime, user.FechaNacimiento);
                 db.AddInParameter(cmd, "@FechaCreacion", DbType.DateTime, user.FechaCreacion);
                 db.AddInParameter(cmd, "@IdTipoUsuario", DbType.Int32, user.IdTipoUsuario);
+                db.AddInParameter(cmd, "@Email", DbType.String, user.Email);
                 db.AddInParameter(cmd, "@Id", DbType.Int32, user.IdUsuario);
 
                 db.ExecuteNonQuery(cmd);
@@ -85,7 +87,7 @@ namespace ArtShop.Data
         public Users SelectById(int id)
         {
             const string SQL_STATEMENT =
-                "SELECT [IdUsuario], [NombreUsuario], [Contraseña], [Nombre], [Apellido],[DNI], [FechaNacimiento], [FechaCreacion], IdTipoUsuario " +
+                "SELECT [IdUsuario], [NombreUsuario], [Contraseña], [Nombre], [Apellido],[DNI], [FechaNacimiento], [FechaCreacion], IdTipoUsuario, Email " +
                 "FROM dbo.Users "+
                 "WHERE [IdUsuario]=@Id ";
 
@@ -111,7 +113,7 @@ namespace ArtShop.Data
         public Users Login(string usr, string psw)
         {
             const string SQL_STATEMENT =
-                "SELECT [IdUsuario], [NombreUsuario], [Contraseña], [Nombre], [Apellido],[DNI], [FechaNacimiento], [FechaCreacion], IdTipoUsuario " +
+                "SELECT [IdUsuario], [NombreUsuario], [Contraseña], [Nombre], [Apellido],[DNI], [FechaNacimiento], [FechaCreacion], IdTipoUsuario, Email" +
                 "FROM dbo.Users " +
                 "WHERE [NombreUsuario]=@usr AND [Contraseña]= @psw ";
 
@@ -139,7 +141,7 @@ namespace ArtShop.Data
         public List<Users> Select()
         {
             const string SQL_STATEMENT =
-                "SELECT [IdUsuario], [NombreUsuario], [Contraseña], [Nombre], [Apellido],[DNI], [FechaNacimiento], [FechaCreacion], IdTipoUsuario " +
+                "SELECT [IdUsuario], [NombreUsuario], [Contraseña], [Nombre], [Apellido],[DNI], [FechaNacimiento], [FechaCreacion], IdTipoUsuario, Email " +
                 "FROM dbo.Users ";
 
             List<Users> result = new List<Users>();
@@ -173,6 +175,7 @@ namespace ArtShop.Data
             user.FechaNacimiento = GetDataValue<DateTime>(dr, "FechaNacimiento");
             user.FechaCreacion = GetDataValue<DateTime>(dr, "FechaCreacion");
             user.IdTipoUsuario = GetDataValue<int>(dr, "IdTipoUsuario");
+            user.Email = GetDataValue<string>(dr, "Email");
             return user;
         }
 
