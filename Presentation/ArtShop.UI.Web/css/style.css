@@ -1869,8 +1869,8 @@ textarea.input {
 }
 
     .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus {
-        background-color: #15161D;
-        border-color: #1E1F29;
+        background-color: #D10024;
+        border-color: #D10024;
     }
 
     .slick-prev:before, .slick-next:before {
