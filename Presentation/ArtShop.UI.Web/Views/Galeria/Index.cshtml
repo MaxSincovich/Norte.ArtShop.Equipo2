@@ -35,23 +35,11 @@
     });
 </script>
 
-<!-- Bootstrap -->
-@*<link type="text/css" rel="stylesheet" href="~/css/bootstrap.min.css" />*@
-
-<!-- Slick -->
+<link type="text/css" rel="stylesheet" href="~/css/style.css" />
 <link type="text/css" rel="stylesheet" href="~/css/slick.css" />
 <link type="text/css" rel="stylesheet" href="~/css/slick-theme.css" />
-
-<!-- nouislider -->
 <link type="text/css" rel="stylesheet" href="~/css/nouislider.min.css" />
-
-<!-- Font Awesome Icon -->
 <link rel="stylesheet" href="~/css/font-awesome.min.css">
-
-<!-- Custom stlylesheet -->
-<link type="text/css" rel="stylesheet" href="~/css/style.css" />
-
-@*----------------------------------------------------------------------------*@
 
 <section id="single-page-slider" class="no-margin">
     <div class="carousel slide" data-ride="carousel">
@@ -74,191 +62,76 @@
 </section><!--/#main-slider-->
 
 <div id="content-wrapper">
-<<<<<<< HEAD
-    @*<section id="portfolio" class="white">*@
-
-    <div class="gap"></div>
-    <div class="center gap fade-down section-heading"></div>
-    <div class="container">
-        <div class="row">
-            <!-- Products tab & slick -->
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="products-tabs">
-                        @foreach (var product in Model)
-                        {
-                            <div class="col-md-3">
-                                <div class="product">
-                                    <div class="product-img">
-                                        <img src="~/images/Obras/@product.Image" alt="http://placehold.it/800x600" style="height:auto">
-                                        <div class="product-label">
-                                        </div>
-                                    </div>
-
-                                    <div class="product-body">
-                                        @*<p class="product-category">Category</p>*@
-                                        <h3 class="product-name"><a href="#">@product.Title</a></h3>
-                                        <h4 class="product-price">$@product.Price <del class="product-old-price">$@product.Price</del></h4>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        <div class="product-btns">
-                                            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                        </div>
-                                    </div>
-
-                                    <div class="add-to-cart">
-                                        <button onclick="EviarAlCarro(@product.Id)" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                                    </div>
-
-                                </div>
-                            </div>
-=======
     <section id="portfolio" class="white">
-        <div class="container">
-            <div class="gap"></div>
-            <div class="center gap fade-down section-heading">
-              
-            </div>
-          
-@*--------------------------------------------------------------------------------------*@
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="products-tabs">
+                                <!-- tab -->
+                                <div id="tab1" class="tab-pane active">
+                                    <div class="products-slick" data-nav="#slick-nav-1">
 
+                                        @foreach (var product in Model)
+                                        {
+                                            <!-- product -->
+                                            <div class="product">
+                                                <div class="product-img">
+                                                    <img src="~/images/Obras/@product.Image" alt="http://placehold.it/600x600" style="object-fit:contain;height:213px">
+                                                    <div class="product-label">
+                                                    </div>
+                                                </div>
+                                                <div class="product-body">
+                                                    <p class="product-category">Category</p>
+                                                    <h3 class="product-name"><a href="#">@product.Title</a></h3>
+                                                    <h4 class="product-price">$@product.Price</h4>
 
-            <ul class="portfolio-items col-3 isotope fade-up">
-                @foreach (var product in Model)
-                {
-                <li class="portfolio-item apps isotope-item">
-                    <div class="item-inner">
-                        <img src="~/images/Obras/@product.Image" alt="http://placehold.it/800x600">
-                        <h5>@product.Title</h5>
-                        <h5>$@product.Price</h5>
-                        <div class="overlay">
-                            <a class="preview btn btn-outlined btn-primary" href="~/images/Obras/@product.Image" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
+                                                    <div class="product-rating">
+                                                        @for (int i = 0; i <= product.AvgStars; i++)
+                                                        {
+                                                            <i class="fa fa-star"></i>
+                                                        }
+                                                    </div>
+                                                    <div class="product-btns">
+                                                            <a class="quick-view" href="~/images/Obras/@product.Image" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="add-to-cart">
+                                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>Agregar</button>
+                                                </div>
+                                            </div>
+                                            <!-- /product -->
+                                        }
+                                    </div>
+                                    <div id="slick-nav-1" class="products-slick-nav"></div>
+                                </div>
+                                <!-- /tab -->
+                            </div>
                         </div>
-                    </div> 
-                    <input  type="number" min="0" max="99" value="1" id="cantidad_@product.Id">
-                    <button onclick="EviarAlCarro(@product.Id)" class="btn btn-success"  type="button">Agregar al carro </button>
-                </li>
->>>>>>> 4c74eb787cf6b636c9a4d55276b89b7460f393ed
-                        }
                     </div>
-                    <!-- /tab -->
+                    <!-- Products tab & slick -->
                 </div>
+                <!-- /row -->
             </div>
+            <!-- /container -->
         </div>
-        <!-- /Products tab & slick -->
-    </div>
-
-
-    @*<ul class="portfolio-items col-3 isotope fade-up">
-        @foreach (var product in Model)
-        {
-        <li class="portfolio-item apps isotope-item">
-            <div class="item-inner">
-                <img src="~/images/Obras/@product.Image" alt="http://placehold.it/800x600">
-                <h5>@product.Title</h5>
-                <h5>$@product.Price</h5>
-                <div class="overlay">
-                    <a class="preview btn btn-outlined btn-primary" href="~/images/Obras/@product.Image" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
-                </div>
-            </div>
-            <button onclick="EviarAlCarro(@product.Id)" class="btn btn-success"  type="button">Agregar al carro </button>
-        </li>
-                }
-        </ul>*@
+        <!-- /SECTION -->
+    </section>
 </div>
-@*</section>*@
 
+<script src="~/Scripts/jquery.min.js"></script>
+<script src="~/Scripts/slick.min.js"></script>
+<script src="~/Scripts/nouislider.min.js"></script>
+<script src="~/Scripts/jquery.zoom.min.js"></script>
+<script src="~/Scripts/main.js"></script>
 
-@*<div id="footer-wrapper">
-        <section id="bottom" class="">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 about-us-widget">
-                        <h4>Global Coverage</h4>
-                        <p>Was drawing natural fat respect husband. An as noisy an offer drawn blush place. These tried for way joy wrote witty. In mr began music weeks after at begin.</p>
-                    </div>/.col-md-3
-
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Company</h4>
-                        <div>
-                            <ul class="arrow">
-                                <li><a href="#">Company Overview</a></li>
-                                <li><a href="#">Meet The Team</a></li>
-                                <li><a href="#">Our Awesome Partners</a></li>
-                                <li><a href="#">Our Services</a></li>
-                            </ul>
-                        </div>
-                    </div>/.col-md-3
-
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Latest Articles</h4>
-                        <div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img class="widget-img" src="http://placehold.it/800x600" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <span class="media-heading"><a href="#">Blog Post A</a></span>
-                                    <small class="muted">Posted 14 April 2014</small>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img class="widget-img" src="http://placehold.it/800x600" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <span class="media-heading"><a href="#">Blog Post B</a></span>
-                                    <small class="muted">Posted 14 April 2014</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>/.col-md-3
-
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Come See Us</h4>
-                        <address>
-                            <strong>Ace Towers</strong><br>
-                            New York Ave,<br>
-                            New York, 215648<br>
-                            <abbr title="Phone"><i class="fa fa-phone"></i></abbr> 546 840654 05
-                        </address>
-                    </div> /.col-md-3
-                </div>
-            </div>
-        </section>/#bottom
-
-        <footer id="footer" class="">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8">
-                        &copy; 2019 Your Site Name. All Rights Reserved. <a href="https://templatemag.com/bootstrap-templates/">Bootstrap templates</a> by TemplateMag.
-                    </div>
-                    <div class="col-sm-4">
-                        <ul class="pull-right">
-                            <li><a id="gototop" class="gototop" href="#"><i class="fa fa-chevron-up"></i></a></li>#gototop
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>/#footer
-    </div>*@
-
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/init.js"></script>
 <script>
 
     function EviarAlCarro(id) {
-<<<<<<< HEAD
-=======
         var cantidad = $("#cantidad_" + id).val();
->>>>>>> 4c74eb787cf6b636c9a4d55276b89b7460f393ed
         $.ajax({
             type: "POST",
             url: "/Galeria/AddCart/",
@@ -269,8 +142,6 @@
             success: function (datos) {
                 location.reload();
             }
-            //dataType: dataType
         });
-
     }
 </script>

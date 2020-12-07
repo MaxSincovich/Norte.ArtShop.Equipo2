@@ -1,4 +1,4 @@
-@charset 'UTF-8';
+﻿@charset 'UTF-8';
 /* Slider */
 .slick-loading .slick-list
 {
@@ -36,7 +36,7 @@
 
     cursor: pointer;
 
-    color: transparent;
+    color: black;
     border: none;
     outline: none;
     background: transparent;
