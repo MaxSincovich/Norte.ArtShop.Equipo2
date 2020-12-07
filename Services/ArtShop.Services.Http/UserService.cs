@@ -19,7 +19,7 @@ namespace ArtShop.Services.Http
         ///
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpPost]
         [Route("Registrar")]
         public Users Register(Users user)
         {

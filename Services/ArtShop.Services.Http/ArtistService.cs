@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Results;
 using ArtShop.Entities.Model;
 using ArtShop.Business;
 
@@ -107,7 +108,7 @@ namespace Artshop.Services.Http
                 var bc = new ArtistBusiness();
                 return bc.List();
             }
-            catch (Exception ex)
+               catch (Exception ex)
             {
                 var httpError = new HttpResponseMessage()
                 {
@@ -124,12 +125,14 @@ namespace Artshop.Services.Http
         /// <param name="id"> </param>
         [HttpDelete]
         [Route("Eliminar")]
-        public void Remove(int id)
+        public StatusCodeResult Remove(int id)
         {
             try
             {
                 var bc = new ArtistBusiness();
                 bc.Remove(id);
+
+                return StatusCode(HttpStatusCode.Accepted);
             }
             catch (Exception ex)
             {
@@ -142,11 +145,6 @@ namespace Artshop.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
-
-
-
-
-
 
         [HttpPost]
         [Route("AgregarImagen")]
