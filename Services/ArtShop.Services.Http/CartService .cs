@@ -28,7 +28,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new CartBusiness();
-                return bc.Create(cart);
+                return bc.Add(cart);
             }
             catch (Exception ex)
             {
@@ -48,7 +48,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new CartBusiness();
-                bc.EditCart(cart);
+                bc.Edit(cart);
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new CartBusiness();
-                return bc.GetById(id);
+                return bc.Get(id);
             }
             catch (Exception ex)
             {
@@ -89,25 +89,25 @@ namespace ArtShop.Services.Http
             }
         }
 
-        [HttpGet]
-        [Route("BuscarxCookie/{cookie}")]
-        public Cart FindbyCookie(string cookie)
-        {
-            try
-            {
-                var bc = new CartBusiness();
-                return bc.GetCartbyCookie(cookie);
-            }
-            catch (Exception ex)
-            {
-                var httpError = new HttpResponseMessage()
-                {
-                    StatusCode = (HttpStatusCode)422,
-                    ReasonPhrase = ex.Message
-                };
+        //[HttpGet]
+        //[Route("BuscarxCookie/{cookie}")]
+        //public Cart FindbyCookie(string cookie)
+        //{
+        //    try
+        //    {
+        //        var bc = new CartBusiness();
+        //        return bc.GetCartbyCookie(cookie);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var httpError = new HttpResponseMessage()
+        //        {
+        //            StatusCode = (HttpStatusCode)422,
+        //            ReasonPhrase = ex.Message
+        //        };
 
-                throw new HttpResponseException(httpError);
-            }
-        }
+        //        throw new HttpResponseException(httpError);
+        //    }
+        //}
     }
 }

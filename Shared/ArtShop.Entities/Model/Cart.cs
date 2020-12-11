@@ -14,6 +14,7 @@ using System.Runtime.Serialization;
 
 namespace ArtShop.Entities.Model
 {
+    [DataContract]
     [Serializable]
     public partial class Cart : IdentityBase
     {
@@ -22,12 +23,19 @@ namespace ArtShop.Entities.Model
             this.CartItem = new HashSet<CartItem>();
         }
 
+        [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
         public string Cookie { get; set; }
 
+        [DataMember]
         public DateTime CartDate { get; set; }
 
+        [DataMember]
         public int ItemCount { get; set; }
 
+        [DataMember]
         public virtual ICollection<CartItem> CartItem { get; set; }
 
 
