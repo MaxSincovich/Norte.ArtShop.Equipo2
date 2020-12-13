@@ -18,11 +18,7 @@ namespace ArtShop.UI.Web.Controllers
             return CartProcess.Get(Convert.ToInt32(id[1]));
         }
 
-        //public List<CartItem> GetCar()
-        //{
-        //    var id = Session["Cart"].ToString().Split('|');
-        //    return CartProcess.Get(Convert.ToInt32(id[1]));
-        //}
+  
 
         public Cart AddCart(List<CartItem> cartItem)
         {

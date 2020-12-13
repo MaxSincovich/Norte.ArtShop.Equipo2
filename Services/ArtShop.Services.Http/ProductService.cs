@@ -29,7 +29,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new ProductBusiness();
-                return bc.Create(product);
+                return bc.Add(product);
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new ProductBusiness();
-                bc.EditProduct(product);
+                bc.Edit(product);
             }
             catch (Exception ex)
             {
@@ -80,7 +80,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new ProductBusiness();
-                return bc.GetById(id);
+                return bc.Get(id);
             }
             catch (Exception ex)
             {
@@ -105,7 +105,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new ProductBusiness();
-                return bc.GetProducts();
+                return bc.List();
             }
             catch (Exception ex)
             {
@@ -129,7 +129,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new ProductBusiness();
-                bc.Delete(id);
+                bc.Remove(id);
             }
             catch (Exception ex)
             {

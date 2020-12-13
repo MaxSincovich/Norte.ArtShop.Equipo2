@@ -10,26 +10,77 @@ namespace ArtShop.Business
 {
     public class ProductBusiness
     {
-        private BaseDataService<Product> db = new BaseDataService<Product>();
-        public List<Product> GetProducts()
+
+        public List<Product> List()
         {
-            return db.Get();
+            List<Product> result = default(List<Product>);
+            var productDAC = new ProductDAC();
+            result = productDAC.Select();
+            return result;
         }
-        public Product EditProduct(Product product)
+
+        public void Edit(Product product)
         {
-            return db.Update(product, product.Id);
+            var productDAC = new ProductDAC();
+            productDAC.UpdateById(product);
         }
-        public Product GetById(int id)
+
+
+        public Product Get(int id)
         {
-            return db.GetById(id);
+            var productDAC = new ProductDAC();
+            var result = productDAC.SelectById(id);
+            return result;
         }
-        public Product Create(Product product)
+
+        public Product Add(Product product)
         {
-            return db.Create(product);
+            Product result = default(Product);
+            var productDAC = new ProductDAC();
+
+            result = productDAC.Create(product);
+            return result;
         }
-        public void Delete (int id)
+
+
+        public void Remove(int id)
         {
-            db.Delete(id);
+            var productDAC = new ProductDAC();
+            productDAC.DeleteById(id);
         }
+
+
+        public void AddImage(byte[] imageBytes, string name)
+        {
+            var productDAC = new ProductDAC();
+            productDAC.AddImage(imageBytes, name);
+        }
+
+
+
+
+
+
+        //private BaseDataService<Product> db = new BaseDataService<Product>();
+        //public List<Product> GetProducts()
+        //{
+        //    return db.Get();
+        //}
+        //public Product EditProduct(Product product)
+        //{
+        //    return db.Update(product, product.Id);
+        //}
+        //public Product GetById(int id)
+        //{
+        //    return db.GetById(id);
+        //}
+        //public Product Create(Product product)
+        //{
+        //    return db.Create(product);
+        //}
+        //public void Delete (int id)
+        //{
+        //    db.Delete(id);
+        //}
     }
 }
