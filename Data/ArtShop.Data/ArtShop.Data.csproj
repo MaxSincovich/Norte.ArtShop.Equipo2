@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="ArtistDAC.cs" />
     <Compile Include="CartDAC.cs" />
+    <Compile Include="CartItemDAC.cs" />
     <Compile Include="DataAccessComponent.cs" />
     <Compile Include="EntityFramework\ArtShopDbContext.cs" />
     <Compile Include="EntityFramework\BaseDataService.cs" />
