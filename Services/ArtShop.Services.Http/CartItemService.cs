@@ -28,7 +28,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new CartItemBusiness();
-                return bc.Create(cartItem);
+                return bc.Add(cartItem);
             }
             catch (Exception ex)
             {
@@ -48,7 +48,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new CartItemBusiness();
-                return bc.EditProduct(cartItem);
+                return bc.Edit(cartItem);
             }
             catch (Exception ex)
             {
@@ -75,7 +75,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new CartItemBusiness();
-                return bc.GetById(id);
+                return bc.Get(id);
             }
             catch (Exception ex)
             {
@@ -110,4 +110,4 @@ namespace ArtShop.Services.Http
             }
         }
     }
-}
+        }

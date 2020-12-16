@@ -46,8 +46,8 @@ namespace ArtShop.Business
 
         public void Remove(int id)
         {
-            var cartDAC = new CartDAC();
-            cartDAC.DeleteById(id);
+            var cartitemDAC = new CartDAC();
+            cartitemDAC.DeleteById(id);
         }
 
 
