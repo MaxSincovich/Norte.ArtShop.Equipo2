@@ -46,8 +46,9 @@ namespace ArtShop.Entities.Model
 
         [DataMember]
         public double AvgStars { get; set; }
-        public int ArtistId { get; set; }
 
+        [DataMember]
+        public int ArtistId { get; set; }
 
         [DataMember]
         public virtual Artist Artist { get; set; }

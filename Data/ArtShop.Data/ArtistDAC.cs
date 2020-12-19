@@ -72,8 +72,6 @@ namespace ArtShop.Data
                 db.ExecuteNonQuery(cmd);
             }
         }
-
-
         public void DeleteById(int id)
         {
             const string SQL_STATEMENT = "DELETE dbo.Artist " +
@@ -86,7 +84,6 @@ namespace ArtShop.Data
                 db.ExecuteNonQuery(cmd);
             }
         }
-
         public Artist SelectById(int id)
         {
             const string SQL_STATEMENT =
@@ -112,8 +109,6 @@ namespace ArtShop.Data
 
             return artist;
         }
-
-
         public List<Artist> Select()
         {
             const string SQL_STATEMENT =
@@ -137,7 +132,6 @@ namespace ArtShop.Data
 
             return result;
         }
-
         public void AddImage(byte[] imageBytes, string name)
         {
             using (var ms = new MemoryStream(imageBytes))
@@ -148,8 +142,6 @@ namespace ArtShop.Data
                 }
             }
         }
-
-
         private Artist LoadArtist(IDataReader dr)
         {
             Artist artist = new Artist();

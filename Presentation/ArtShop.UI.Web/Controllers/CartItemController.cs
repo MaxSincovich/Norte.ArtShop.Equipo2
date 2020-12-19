@@ -22,17 +22,13 @@ namespace ArtShop.UI.Web.Controllers
 
             return ListcartItem;
         }
-
-
-
-
         public int Getcount()
         {
             if (System.Web.HttpContext.Current.Session["Cart"] != null && (!String.IsNullOrEmpty(System.Web.HttpContext.Current.Session["Cart"].ToString())))
             {
                 var idCart = System.Web.HttpContext.Current.Session["Cart"].ToString().Split('|');
-                var listCartItem = CartItemProcess.GetbyCartId(Convert.ToInt32((idCart[1])));
-                return listCartItem.Count();
+                //var listCartItem = CartItemProcess.GetbyCartId(Convert.ToInt32((idCart[1])));
+                return CartItemProcess.GetbyCartId(Convert.ToInt32(idCart[1])).Count();
             }
             else
             {

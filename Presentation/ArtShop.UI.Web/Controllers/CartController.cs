@@ -12,30 +12,20 @@ namespace ArtShop.UI.Web.Controllers
     {
         CartProcess CartProcess = new CartProcess();
 
-        public Cart GetCar()
+        public Cart GetCart()
         {
-            var id = System.Web.HttpContext.Current.Session["Cart"].ToString().Split('|');
-            return CartProcess.Get(Convert.ToInt32(id[1]));
+            return CartProcess.Get(Convert.ToInt32(System.Web.HttpContext.Current.Session["Cart"].ToString().Split('|')[1]));
         }
-
-  
-
-        public Cart AddCart(List<CartItem> cartItem)
+        public Cart CreateCart()
         {
-
-
             HttpCookie cartCookie = new HttpCookie("MyCartCookie");
             var GuidCookie = Guid.NewGuid();
-            //var _fecha = DateTime.Now.ToString("yyyy/MM/dd");
             cartCookie.Value = GuidCookie.ToString();
             var _car = new Cart()
             {
                 CartDate = DateTime.Now,
                 Cookie = cartCookie.Value,
                 ItemCount = 1,
-                //CartItem = cartItem,
-                ChangedBy = "Admin",
-                ChangedOn = DateTime.Now,
                 CreatedBy = GuidCookie.ToString(),
                 CreatedOn = DateTime.Now
             };

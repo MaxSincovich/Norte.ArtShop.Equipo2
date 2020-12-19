@@ -10,13 +10,13 @@ namespace ArtShop.Business
 {
     public class CartItemBusiness
     {
-        public List<CartItem> List()
-        {
-            List<CartItem> result = default(List<CartItem>);
-            var cartitemDAC = new CartItemDAC();
-            result = cartitemDAC.Select();
-            return result;
-        }
+        //public List<CartItem> List()
+        //{
+        //    List<CartItem> result = default(List<CartItem>);
+        //    var cartitemDAC = new CartItemDAC();
+        //    result = cartitemDAC.Select();
+        //    return result;
+        //}
 
 
 
@@ -31,6 +31,13 @@ namespace ArtShop.Business
         {
             var cartitemDAC = new CartItemDAC();
             var result = cartitemDAC.SelectById(id);
+            return result;
+        }
+
+        public List<CartItem> GetbyCartID(int id)
+        {
+            var cartitemDAC = new CartItemDAC();
+            var result = cartitemDAC.Select(id);
             return result;
         }
 

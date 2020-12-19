@@ -86,7 +86,8 @@ namespace ArtShop.Data
             const string SQL_STATEMENT =
                 "SELECT [Id], [Price], [Quantity], [CartId], [ProductId] " +
                 "FROM dbo.CartItem  " +
-                "WHERE [Id]=@Id ";
+                //"WHERE [Id]=@Id ";
+                 "WHERE [cartId]=@Id ";
 
             CartItem cartItem = null;
 
@@ -108,17 +109,19 @@ namespace ArtShop.Data
         }
 
 
-        public List<CartItem> Select()
+        public List<CartItem> Select(int id)
         {
             const string SQL_STATEMENT =
                 "SELECT [Id], [Price], [Quantity], [CartId], [ProductId] " +
-                "FROM dbo.CartItem ";
+                "FROM dbo.CartItem "+
+                "WHERE [cartId]=@Id ";
 
             List<CartItem> result = new List<CartItem>();
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
+                db.AddInParameter(cmd, "@Id", DbType.Int32, id);
                 using (IDataReader dr = db.ExecuteReader(cmd))
                 {
                     while (dr.Read())
