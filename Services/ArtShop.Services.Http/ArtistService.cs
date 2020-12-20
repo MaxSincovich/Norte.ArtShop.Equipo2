@@ -81,7 +81,8 @@ namespace Artshop.Services.Http
             try
             {
                 var bc = new ArtistBusiness();
-                return bc.Get(id);
+                var res = bc.Get(id);
+                return res;
             }
             catch (Exception ex)
             {

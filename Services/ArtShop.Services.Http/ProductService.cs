@@ -80,7 +80,9 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new ProductBusiness();
-                return bc.GetById(id);
+                Product res = bc.GetById(id);
+                res.Artist = null;
+                return res;
             }
             catch (Exception ex)
             {

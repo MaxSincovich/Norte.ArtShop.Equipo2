@@ -113,9 +113,9 @@ namespace ArtShop.Data
         public Users Login(string usr, string psw)
         {
             const string SQL_STATEMENT =
-                "SELECT [IdUsuario], [NombreUsuario], [Contraseña], [Nombre], [Apellido],[DNI], [FechaNacimiento], [FechaCreacion], IdTipoUsuario, Email" +
-                "FROM dbo.Users " +
-                "WHERE [NombreUsuario]=@usr AND [Contraseña]= @psw ";
+                "SELECT [IdUsuario], [NombreUsuario], [Contraseña], [Nombre], [Apellido],[DNI], [FechaNacimiento], [FechaCreacion], IdTipoUsuario, Email " +
+                " FROM dbo.Users " +
+                " WHERE [NombreUsuario]=@usr AND [Contraseña]= @psw ";
 
             Users user = null;
 
