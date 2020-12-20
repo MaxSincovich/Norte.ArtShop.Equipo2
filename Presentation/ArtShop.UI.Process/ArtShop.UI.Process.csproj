@@ -81,6 +81,7 @@
     <Compile Include="ArtistaProcess.cs" />
     <Compile Include="CartItemProcess.cs" />
     <Compile Include="MediaType.cs" />
+    <Compile Include="OrderProcess.cs" />
     <Compile Include="ProcessComponent.cs" />
     <Compile Include="CartProcess.cs" />
     <Compile Include="ProductProcess.cs" />
