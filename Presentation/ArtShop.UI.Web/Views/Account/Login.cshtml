@@ -4,44 +4,39 @@
 
 @model ArtShop.Entities.Model.Users
 
-
-<div class="container" style="padding-top:5%">
-    <h1 class="text-center">Bienvenido</h1>
-
-    <div class="row">
-        <div class="row justify-content-sm-center">
-
-            <div class="col-md-12">
-
-
-
-                    <div class="card border-info text-center">
-                        <div class="card-header">
-                            Inicie sesion
-                        </div>
-
-
-                        <div class="card-body">
-                            @using (Html.BeginForm())
-                            {
-                                @Html.AntiForgeryToken()
-
-                                @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @placeholder = "Usuario", @required = true } });
-
-                                <br /><br />
-
-                                @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @placeholder = "Password", @required = true } });
-
-                                <br /><br />
-                                if (ViewBag.ErrorMessage != null)
+<div id="content-wrapper">
+    <section  class="white">
+            <h1 class="text-center">Bienvenido</h1>
+            <div class="row">
+                <div class="row justify-content-sm-center">
+                    <div class="col-md-12">
+                        <div class="card border-info text-center">
+                            <div class="card-header">
+                                Inicie sesion
+                            </div>
+                            <div class="card-body">
+                                @using (Html.BeginForm())
                                 {
-                                    <span class="text-danger">@ViewBag.ErrorMessage</span>
+                                    @Html.AntiForgeryToken()
+
+                                    @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @placeholder = "Usuario", @required = true } });
+
+                                    <br /><br />
+
+                                    @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @placeholder = "Password", @required = true } });
+
+                                    <br /><br />
+                                    if (ViewBag.ErrorMessage != null)
+                                    {
+                                        <span class="text-danger">@ViewBag.ErrorMessage</span>
+                                    }
+                                    <button class="btn btn-lg btn-outline-primary btn-block mb-1" type="submit">Ingresar</button>
+                                    <button class="btn btn-lg btn-outline-primary btn-block mb-1" type="submit">Registrate</button>
                                 }
-                                <button class="btn btn-lg btn-outline-primary btn-block mb-1 col-sm-12 col-xs-12" type="submit">Ingresar</button>
-                            }
+                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
+</section>
+</div>
