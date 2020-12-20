@@ -22,10 +22,10 @@ namespace ArtShop.Data
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
             {
                 db.AddInParameter(cmd, "@Title", DbType.String, product.Title);
-                db.AddInParameter(cmd, " @Description", DbType.String, product.Description);
+                db.AddInParameter(cmd, "@Description", DbType.String, product.Description);
                 db.AddInParameter(cmd, "@Image", DbType.String, product.Image);
                 db.AddInParameter(cmd, "@Price", DbType.Double, product.Price);
-                db.AddInParameter(cmd, " @QuantitySold", DbType.Int32, product.QuantitySold);
+                db.AddInParameter(cmd, "@QuantitySold", DbType.Int32, product.QuantitySold);
                 db.AddInParameter(cmd, "@AvgStars", DbType.Double, product.AvgStars);
                 db.AddInParameter(cmd, "@ArtistId", DbType.Int32, product.ArtistId);
 
@@ -50,9 +50,9 @@ namespace ArtShop.Data
                     "[Image]=@Image, " +
                     "[Price]=@Price, " +
                     "[QuantitySold]=@QuantitySold, " +
-                    "[AvgStars]=@AvgStars " +
-                    "[ArtistId]=@ArtistId" +
-                "WHERE [Id]=@Id ";
+                    "[AvgStars]=@AvgStars," +
+                    "[ArtistId]=@ArtistId " +
+                " WHERE [Id]=@Id ";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
@@ -64,6 +64,8 @@ namespace ArtShop.Data
                 db.AddInParameter(cmd, "@QuantitySold", DbType.Int32, product.QuantitySold);
                 db.AddInParameter(cmd, "@AvgStars", DbType.Double, product.AvgStars);
                 db.AddInParameter(cmd, "@Id", DbType.Int32, product.Id);
+                db.AddInParameter(cmd, "@ArtistId", DbType.Int32, product.ArtistId);
+
 
                 db.AddInParameter(cmd, "@CreatedOn", DbType.DateTime, product.CreatedOn != DateTime.MinValue ? product.CreatedOn : DateTime.Now);
                 db.AddInParameter(cmd, "@CreatedBy", DbType.String, String.IsNullOrEmpty(product.CreatedBy) ? "ApiUser" : product.CreatedBy);

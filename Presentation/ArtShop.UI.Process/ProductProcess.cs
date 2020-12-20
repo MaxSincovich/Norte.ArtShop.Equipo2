@@ -32,5 +32,10 @@ namespace ArtShop.UI.Process
         {
             HttpPost<Product>("api/product/editar", product, MediaType.Json);
         }
+
+        public void Remove(int productId)
+        {
+            HttpDelete<Product>("api/product/Eliminar", productId, MediaType.Json);
+        }
     }
 }

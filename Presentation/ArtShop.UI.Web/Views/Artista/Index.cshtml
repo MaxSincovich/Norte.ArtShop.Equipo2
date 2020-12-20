@@ -59,6 +59,10 @@
                 @*<h2 class="main-title">Examples Of Excellence</h2>
                     <hr>
                     <p>Nuestra Seleccion para usted</p>*@
+                @if (!this.User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink("Nuevo", "Create", null, new {@class = "btn btn-success"})
+                }
             </div>
 
             <ul class="portfolio-items isotope fade-up">
@@ -75,7 +79,22 @@
                                 <h3>@_artist.FirstName @_artist.LastName</h3>
                                 <h4>@_artist.Country</h4>
                                 <p>@_artist.Description</p>
+                                
+                                
+                                @if (!this.User.IsInRole("Admin"))
+                                {
+                                    <a href="@Url.Action("Edit", new {id = _artist.Id})" alt="Editar" class="btn btn-success" title="Editar">
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a href="@Url.Action("Delete", new {id = _artist.Id})" alt="Borrar" class="btn btn-danger" title="Borrar">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>
+                                }
+
                             </div>
+                            
+                            
 
                         </div>
                     </li>

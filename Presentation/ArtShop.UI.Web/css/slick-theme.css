@@ -40,6 +40,7 @@
     border: none;
     outline: none;
     background: transparent;
+    background-color: #808080;
 }
 .slick-prev:hover,
 .slick-prev:focus,
@@ -49,6 +50,7 @@
     color: transparent;
     outline: none;
     background: transparent;
+    background-color: #808888;
 }
 .slick-prev:hover:before,
 .slick-prev:focus:before,
