@@ -315,6 +315,12 @@
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\Charts.cshtml" />
     <Content Include="Views\Dashboard\Tables.cshtml" />
+    <Content Include="Views\Artista\Create.cshtml" />
+    <Content Include="Views\Galeria\Create.cshtml" />
+    <Content Include="Views\Galeria\Edit.cshtml" />
+    <Content Include="Views\Galeria\Delete.cshtml" />
+    <Content Include="Views\Artista\Edit.cshtml" />
+    <Content Include="Views\Artista\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

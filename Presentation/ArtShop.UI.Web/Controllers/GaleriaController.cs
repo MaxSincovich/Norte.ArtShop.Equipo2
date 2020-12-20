@@ -3,6 +3,7 @@ using ArtShop.UI.Process;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -53,5 +54,103 @@ namespace ArtShop.UI.Web.Controllers
             }
             return Json(Cart, JsonRequestBehavior.AllowGet);
         }
+
+
+
+        public ActionResult Create()
+        {
+            var artProcess = new ArtistaProcess();
+            ViewBag.ArtistId = new SelectList(artProcess.List(),"Id", "LastName");
+
+            return View();
+        }
+
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Create(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                var productRet = productProcess.Add(product);
+
+                if (productRet.Id != 0)
+                    return RedirectToAction("Index");
+            }
+
+
+            var artProcess = new ArtistaProcess();
+            ViewBag.ArtistId = new SelectList(artProcess.List(), "Id", "LastName", product.ArtistId);
+
+            return View(product);
+        }
+
+
+
+
+
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = productProcess.Get(id.Value);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+
+            var artProcess = new ArtistaProcess();
+            ViewBag.ArtistId = new SelectList(artProcess.List(), "Id", "LastName", product.ArtistId);
+            return View(product);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                productProcess.Edit(product);
+                return RedirectToAction("Index");
+            }
+
+
+            var artProcess = new ArtistaProcess();
+            ViewBag.ArtistId = new SelectList(artProcess.List(), "Id", "LastName",product.ArtistId);
+            return View(product);
+        }
+
+
+
+        public ActionResult Delete(int id)
+        {
+            Product product = productProcess.Get(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(product);
+        }
+
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(Product product)
+        {
+            if (product.Id != 0)
+            {
+                productProcess.Remove(product.Id);
+                return RedirectToAction("Index");
+            }
+
+            return View(product);
+        }
+
+
     }
 }

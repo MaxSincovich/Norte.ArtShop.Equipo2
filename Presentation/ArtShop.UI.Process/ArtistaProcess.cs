@@ -32,5 +32,10 @@ namespace ArtShop.UI.Process
             HttpPost<Artist>("api/artist/editar", artist, MediaType.Json);
         }
 
+        public void Remove(int artistId)
+        {
+            HttpDelete<Artist>("api/artist/Eliminar", artistId, MediaType.Json);
+        }
+
     }
 }

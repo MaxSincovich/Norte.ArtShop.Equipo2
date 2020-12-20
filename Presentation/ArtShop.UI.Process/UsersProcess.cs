@@ -41,9 +41,21 @@ namespace ArtShop.UI.Process
             return uBis.GetTipoUsuarios();
         }
 
+        //public Users LogIn(Users user)
+        //{
+        //    return uBis.Login(user);
+        //}
+
         public Users LogIn(Users user)
         {
-            return uBis.Login(user);
+            var response = HttpPost<Users>("api/user/Ingresar", user, MediaType.Json);
+            return response;
+        }
+
+        public Users Register(Users user)
+        {
+            var response = HttpPost<Users>("api/user/Registrar", user, MediaType.Json);
+            return response;
         }
 
     }

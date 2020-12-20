@@ -50,13 +50,10 @@ namespace ArtShop.Entities.Model
         [DataMember]
         public int ArtistId { get; set; }
 
-        [DataMember]
+
         public virtual Artist Artist { get; set; }
-        [DataMember]
         public virtual ICollection<CartItem> CartItem { get; set; }
-        [DataMember]
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
-        [DataMember]
         public virtual ICollection<Rating> Rating { get; set; }
 
 
