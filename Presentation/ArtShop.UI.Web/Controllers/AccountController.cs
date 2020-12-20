@@ -25,23 +25,7 @@ namespace ArtShop.UI.Web.Controllers
         {
             try
             {
-                //TODO Coneccion a a BD
-                /*
-                  if (db.SEC_User.Where(x => x.UserName == user.UserName && x.IsActive).Any())
-                  {
-                      StringCypher sc = new StringCypher();
-                      var realUser = db.SEC_User.Where(x => x.UserName == user.UserName && x.IsActive).First();
 
-
-                      var psw = sc.DesEncriptar(realUser.Password);
-                      if (psw == user.Password)
-                      {
-                          FormsAuthentication.SetAuthCookie(user.UserName, false);
-                          return RedirectToAction("Index", "Home");
-                      }
-                      sc = null;
-                  }
-                  */
 
                 var userdb = uP.LogIn(user);
 

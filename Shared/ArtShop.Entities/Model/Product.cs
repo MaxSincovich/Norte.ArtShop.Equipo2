@@ -27,25 +27,36 @@ namespace ArtShop.Entities.Model
         }
 
         [DataMember]
+        public int Id { get; set; }
+
+        [DataMember]
         public string Title { get; set; }
+
         [DataMember]
         public string Description { get; set; }
+
         [DataMember]
         public string Image { get; set; }
+
         [DataMember]
         public double Price { get; set; }
-        [DataMember]
 
+        [DataMember]
         public int QuantitySold { get; set; }
 
         [DataMember]
         public double AvgStars { get; set; }
+
         [DataMember]
         public int ArtistId { get; set; }
+
         [DataMember]
         public virtual Artist Artist { get; set; }
+        [DataMember]
         public virtual ICollection<CartItem> CartItem { get; set; }
+        [DataMember]
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
+        [DataMember]
         public virtual ICollection<Rating> Rating { get; set; }
 
 

@@ -10,30 +10,80 @@ namespace ArtShop.Business
 {
     public class CartBusiness
     {
-        private BaseDataService<Cart> db = new BaseDataService<Cart>();
-        public List<Cart> GeCart()
+        public List<Cart> List()
         {
-            return db.Get();
+            List<Cart> result = default(List<Cart>);
+            var cartDAC = new CartDAC();
+            result = cartDAC.Select();
+            return result;
         }
-        public Cart GetCartbyCookie(string cookie)
+
+
+
+        public void Edit(Cart cart)
         {
-            return db.Get(c=>c.Cookie == cookie).FirstOrDefault();
+            var cartDAC = new CartDAC();
+            cartDAC.UpdateById(cart);
         }
-        public Cart EditCart(Cart cart)
+
+
+        public Cart Get(int id)
         {
-            return db.Update(cart, cart.Id);
+            var carttDAC = new CartDAC();
+            var result = carttDAC.SelectById(id);
+            return result;
         }
-        public Cart GetById(int id)
+
+        public Cart Add(Cart cart)
         {
-            return db.GetById(id);
+            Cart result = default(Cart);
+            var cartDAC = new CartDAC();
+
+            result = cartDAC.Create(cart);
+            return result;
         }
-        public Cart Create(Cart cart)
+
+
+        public void Remove(int id)
         {
-            return db.Create(cart);
+            var cartitemDAC = new CartDAC();
+            cartitemDAC.DeleteById(id);
         }
-        public void Delete (int id)
-        {
-            db.Delete(id);
-        }
+
+
+
+
+
+
+
+
+
+
+
+        //private BaseDataService<Cart> db = new BaseDataService<Cart>();
+        //public List<Cart> GeCart()
+        //{
+        //    return db.Get();
+        //}
+        //public Cart GetCartbyCookie(string cookie)
+        //{
+        //    return db.Get(c=>c.Cookie == cookie).FirstOrDefault();
+        //}
+        //public Cart EditCart(Cart cart)
+        //{
+        //    return db.Update(cart, cart.Id);
+        //}
+        //public Cart GetById(int id)
+        //{
+        //    return db.GetById(id);
+        //}
+        //public Cart Create(Cart cart)
+        //{
+        //    return db.Create(cart);
+        //}
+        //public void Delete (int id)
+        //{
+        //    db.Delete(id);
+        //}
     }
 }

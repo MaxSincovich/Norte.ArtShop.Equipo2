@@ -106,11 +106,8 @@ namespace ArtShop.UI.Process
             }
             return result;
         }
-
-
         public static T HttpDelete<T>(string path, int value, string mediaType)
         {
-
             var pathAndQuery = path.EndsWith("?") ? path : path += "?";
             pathAndQuery += "id=" + value.ToString();
             T result = default(T);
@@ -127,8 +124,5 @@ namespace ArtShop.UI.Process
             }
             return result;
         }
-
-
-
     }
 }

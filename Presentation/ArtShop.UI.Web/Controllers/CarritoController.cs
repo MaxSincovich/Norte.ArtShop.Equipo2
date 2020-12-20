@@ -16,11 +16,11 @@ namespace ArtShop.UI.Web.Controllers
         // GET: Carrito
         public ActionResult Index()
         {
-            if (Session["Cart"] != null && !String.IsNullOrEmpty(Session["Cart"].ToString()))
+            var sessionCart = Session["Cart"];
+
+            if (sessionCart != null && !String.IsNullOrEmpty(sessionCart.ToString()))
             {
-                var id = System.Web.HttpContext.Current.Session["Cart"].ToString().Split('|');
-                var cart = cartProcess.Get(Convert.ToInt32(id[1]));
-                var lista = cartItemProcess.GetbyCartId(cart.Id);
+                var lista = cartItemProcess.GetbyCartId(cartProcess.Get(Convert.ToInt32(sessionCart.ToString().Split('|')[1])).Id);
                 foreach (var item in lista)
                 {
                     item.Product = productProcess.Get(item.ProductId);
@@ -28,8 +28,7 @@ namespace ArtShop.UI.Web.Controllers
                 }
                 return View(lista);
             }
-            return View();
-
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult Compra()
         {

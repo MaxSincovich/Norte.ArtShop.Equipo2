@@ -22,17 +22,12 @@ namespace ArtShop.UI.Web.Controllers
 
             return ListcartItem;
         }
-
-
-
-
         public int Getcount()
         {
-            if (System.Web.HttpContext.Current.Session["Cart"] != null && (!String.IsNullOrEmpty(System.Web.HttpContext.Current.Session["Cart"].ToString())))
+            var sessionCart = Session["Cart"];
+            if (sessionCart != null && (!String.IsNullOrEmpty(sessionCart.ToString())))
             {
-                var idCart = System.Web.HttpContext.Current.Session["Cart"].ToString().Split('|');
-                var listCartItem = CartItemProcess.GetbyCartId(Convert.ToInt32((idCart[1])));
-                return listCartItem.Count();
+                return CartItemProcess.GetbyCartId(Convert.ToInt32(sessionCart.ToString().Split('|')[1])).Count();
             }
             else
             {
@@ -46,6 +41,5 @@ namespace ArtShop.UI.Web.Controllers
             var cartItem = CartItemProcess.GetbyCartId(cartId).Where(a => a.ProductId == idProducto).FirstOrDefault();            
             return cartItem;
         }
-        
     }
 }

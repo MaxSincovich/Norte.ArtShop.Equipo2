@@ -28,7 +28,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new CartItemBusiness();
-                return bc.Create(cartItem);
+                return bc.Add(cartItem);
             }
             catch (Exception ex)
             {
@@ -43,12 +43,16 @@ namespace ArtShop.Services.Http
 
         [HttpPost]
         [Route("Editar")]
-        public CartItem Edit(CartItem cartItem)
+        //public CartItem Edit(CartItem cartItem)
+        public void Edit(CartItem cartItem)
         {
             try
             {
-                var bc = new CartItemBusiness();
-                return bc.EditProduct(cartItem);
+                //var bc = new CartItemBusiness();
+                //return bc.Edit(cartItem);
+
+                new CartItemBusiness().Edit(cartItem);
+
             }
             catch (Exception ex)
             {
@@ -75,7 +79,7 @@ namespace ArtShop.Services.Http
             try
             {
                 var bc = new CartItemBusiness();
-                return bc.GetById(id);
+                return bc.Get(id);
             }
             catch (Exception ex)
             {
@@ -91,12 +95,14 @@ namespace ArtShop.Services.Http
 
         [HttpGet]
         [Route("BuscarItems/{idCart}")]
+        //public List<CartItem> FindItems(int idCart)
         public List<CartItem> FindItems(int idCart)
         {
             try
             {
                 var bc = new CartItemBusiness();
-                return bc.GetByIdCart(idCart);
+                //return bc.GetByIdCart(idCart);
+                return bc.GetbyCartID(idCart);
             }
             catch (Exception ex)
             {
@@ -110,4 +116,4 @@ namespace ArtShop.Services.Http
             }
         }
     }
-}
+        }
