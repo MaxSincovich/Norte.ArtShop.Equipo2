@@ -69,6 +69,14 @@
 
 <div id="content-wrapper">
     <section id="portfolio" class="white">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item " aria-current="page"><a href="/Home/"><strong>Inicio</strong></a></li>
+                <li class="breadcrumb-item active"><strong>Carrito de Compras</strong></li>
+            </ol>
+
+        </nav>
         <section class="shoping-cart spad">
             <div class="container">
                 <div class="row">
@@ -101,12 +109,12 @@
                                                 $@cartItem.Product.Price
                                             </td>
                                             <td class="shoping__cart__quantity">
-                                                    <div class="quantity">
-                                                        <div class="pro-qty">
-                                                            <input class="cant" type="text" value=@cartItem.Quantity>
-                                                        </div>
+                                                <div class="quantity">
+                                                    <div class="pro-qty">
+                                                        <input class="cant" type="text" value=@cartItem.Quantity>
                                                     </div>
-                                                </td>
+                                                </div>
+                                            </td>
                                             <td class="shoping__cart__total">
                                                 $@totalCant
                                             </td>
