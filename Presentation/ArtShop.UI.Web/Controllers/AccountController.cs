@@ -84,12 +84,13 @@ namespace ArtShop.UI.Web.Controllers
             user.IdUsuario = 1;
             user.FechaNacimiento = DateTime.Now;
             user.FechaCreacion = DateTime.Now;
-            //if (ModelState.IsValid)
-            //{
+
                 var artRet = uP.Create(user);
-                return RedirectToAction("Index", "Home");
-            //}
-            //return View();
+
+            System.Web.HttpContext.Current.Session["User"] = artRet.IdTipoUsuario;
+            System.Web.HttpContext.Current.Session["UserMail"] = artRet.Email;
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

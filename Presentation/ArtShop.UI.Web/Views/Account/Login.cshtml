@@ -5,69 +5,50 @@
 @model ArtShop.Entities.Model.Users
 
 <div id="content-wrapper">
-    <section id="contact" class="white">
-        <div class="container">
+    <section  class="white">
+            <h1 class="text-center">Bienvenido</h1>
+            <div class="row">
+                <div class="row justify-content-sm-center">
+                    <div class="col-md-12">
+                        <div class="card border-info text-center">
+                            <div class="card-header">
+                                Inicie sesion
+                            </div>
+                            <div class="card-body">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
 
-            <h1>Bienvenido</h1>
+                                    @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @placeholder = "Usuario", @required = true } });
 
-            <h2>
-                Inicie sesion
-            </h2>
-            <div class="card-body">
-                @using (Html.BeginForm())
-                {
-                    @Html.AntiForgeryToken()
+                                    <br /><br />
 
-                    <div class="form-horizontal">
+                                    @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @placeholder = "Password", @required = true } });
 
-                        <div class="form-group">
-                            <div class="form-group col-md-6">
-                                <p>Usuario</p>
-                                @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @required = true } })
+                                    <br /><br />
+                                    if (ViewBag.ErrorMessage != null)
+                                    {
+                                        <span class="text-danger">@ViewBag.ErrorMessage</span>
+                                    }
+									
+                                    <button class="btn btn-lg btn-outline-primary btn-block mb-1" type="submit">Ingresar</button>
+									
+                                    <button id="btnRegistro" class="btn btn-lg btn-outline-primary btn-block mb-1" type="submit">Registrate</button>
 
+                                }
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <div class="form-group col-md-6">
-                                <p>Contraseña</p>
-                                @Html.PasswordFor(model => model.Contraseña, new { htmlAttributes = new { @required = true } })
-
-                            </div>
-                        </div>
-
-
-                        @if (ViewBag.ErrorMessage != null)
-                        {
-                            <span class="text-danger">@ViewBag.ErrorMessage</span>
-                        }
-
-                        <div class="form-group">
-                            <div class="form-group col-md-6">
-
-                                <button class="btn btn-defaul" type="submit">Ingresar</button>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="form-group col-md-6">
-
-                                <button id="btnRegistro" class="btn btn-defaul" type="submit">Registrate</button>
-                            </div>
-                        </div>
-
-                    </div>
-                }
-            </div>
-
-        </div>
-                    </section>
                 </div>
+            </div>
+        </div>
+</section>
+</div>
 
-            <script>
 
-                $("#btnRegistro").click(function () {
-                    window.location = "/Account/Create";
-                });
+<script>
 
-            </script>
+    $("#btnRegistro").click(function () {
+        window.location = "/Account/Create";
+    });
+
+</script>
