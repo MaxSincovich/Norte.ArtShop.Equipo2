@@ -118,7 +118,7 @@ namespace ArtShop.UI.Process
                 client.BaseAddress = new Uri(ConfigurationManager.AppSettings["serviceUrl"]);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(mediaType));
 
-                var response = client.DeleteAsync(pathAndQuery).Result;
+                var response = client.PostAsJsonAsync(pathAndQuery,value).Result;
                 response.EnsureSuccessStatusCode();
                 result = response.Content.ReadAsAsync<T>().Result;
             }

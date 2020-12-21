@@ -122,7 +122,7 @@ namespace ArtShop.Services.Http
         /// <summary>
         /// </summary>
         /// <param name="id"> </param>
-        [HttpDelete]
+        [HttpPost]
         [Route("Eliminar")]
         public void Remove(int id)
         {

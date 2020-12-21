@@ -25,8 +25,6 @@ namespace ArtShop.UI.Web.Controllers
         {
             try
             {
-
-
                 var userdb = uP.LogIn(user);
 
                 if (userdb == null)
@@ -37,16 +35,15 @@ namespace ArtShop.UI.Web.Controllers
                 {
                     if (userdb.Contraseña == user.Contraseña || userdb.NombreUsuario == user.NombreUsuario)
                     {
-                        FormsAuthentication.SetAuthCookie(user.NombreUsuario, false);
+                        FormsAuthentication.SetAuthCookie(user.NombreUsuario, true);
                         return RedirectToAction("Index", "Home");
                     }
                 }
-                //var psw = "Metodo Que va a la bd a buscar el password de usuario";       
                 return View(user);
             }
             catch (Exception ex)
             {
-                ViewBag.ErrorMessage = "Los datos ingresados no son correctos, Error.";
+                ViewBag.ErrorMessage = "Los datos ingresados no son correctos.";
                 return View(user);
             }
         }
@@ -57,10 +54,5 @@ namespace ArtShop.UI.Web.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
-
-
-
-
-
     }
 }

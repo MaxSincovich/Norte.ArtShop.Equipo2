@@ -74,8 +74,8 @@ namespace ArtShop.Data
         }
         public void DeleteById(int id)
         {
-            const string SQL_STATEMENT = "DELETE dbo.Artist " +
-                                         "WHERE [Id]=@Id ";
+            const string SQL_STATEMENT = " DELETE FROM dbo.Artist " +
+                                         " WHERE [Id]=@Id ";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))

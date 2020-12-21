@@ -85,11 +85,6 @@ namespace ArtShop.UI.Web.Controllers
             return View(product);
         }
 
-
-
-
-
-
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -123,9 +118,6 @@ namespace ArtShop.UI.Web.Controllers
             ViewBag.ArtistId = new SelectList(artProcess.List(), "Id", "LastName",product.ArtistId);
             return View(product);
         }
-
-
-
         public ActionResult Delete(int id)
         {
             Product product = productProcess.Get(id);
@@ -137,7 +129,7 @@ namespace ArtShop.UI.Web.Controllers
             return View(product);
         }
 
-
+        //[HttpPost, ActionName("Delete")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Product product)
