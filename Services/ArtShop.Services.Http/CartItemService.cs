@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace ArtShop.Services.Http
 {
@@ -115,5 +116,28 @@ namespace ArtShop.Services.Http
                 throw new HttpResponseException(httpError);
             }
         }
-    }
+
+        [HttpPost]
+        [Route("Eliminar")]
+        public StatusCodeResult Remove(int id)
+        {
+            try
+            {
+                var bc = new CartItemBusiness();
+                bc.Remove(id);
+
+                return StatusCode(HttpStatusCode.Accepted);
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    Content = new StringContent(ex.Message)
+                };
+
+                throw new HttpResponseException(httpError);
+            }
         }
+    }
+}

@@ -17,7 +17,10 @@ namespace ArtShop.UI.Web.Controllers
 
         public ActionResult Login()
         {
-            //return View(new Users());
+            if (System.Web.HttpContext.Current.Session["User"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -38,6 +41,7 @@ namespace ArtShop.UI.Web.Controllers
                     if (userdb.Contraseña == user.Contraseña || userdb.NombreUsuario == user.NombreUsuario)
                     {
                         System.Web.HttpContext.Current.Session["User"] = userdb.IdTipoUsuario;
+                        System.Web.HttpContext.Current.Session["UserMail"] = userdb.Email;
                         FormsAuthentication.SetAuthCookie(user.NombreUsuario, true);
                         return RedirectToAction("Index", "Home");
                     }
@@ -56,6 +60,7 @@ namespace ArtShop.UI.Web.Controllers
         {
             FormsAuthentication.SignOut();
             System.Web.HttpContext.Current.Session["User"] = null;
+            System.Web.HttpContext.Current.Session["UserMail"] = null;
             return RedirectToAction("Index", "Home");
         }
     }

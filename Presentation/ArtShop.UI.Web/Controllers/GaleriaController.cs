@@ -25,6 +25,7 @@ namespace ArtShop.UI.Web.Controllers
         public JsonResult AddCart(int? id, int? cantidad)
         {
             var Cart = new Cart();
+            var Mail = System.Web.HttpContext.Current.Session["UserMail"];
             var sesionCart = Session["Cart"];
             if (sesionCart == null || String.IsNullOrEmpty(sesionCart.ToString()))
             {
@@ -35,9 +36,9 @@ namespace ArtShop.UI.Web.Controllers
                     Price = productProcess.Get(Convert.ToInt32(id)).Price,
                     Quantity = Convert.ToInt32(cantidad),
                     CartId = Cart.Id,
-                    CreatedBy = "admin",
+                    CreatedBy = Mail == null ? "N/D": Mail.ToString(),
                     CreatedOn = DateTime.Now
-                });
+                }); ;
             }
             else
             {
@@ -48,7 +49,7 @@ namespace ArtShop.UI.Web.Controllers
                     Price = productProcess.Get(Convert.ToInt32(id)).Price,
                     Quantity = Convert.ToInt32(cantidad),
                     CartId = Cart.Id,
-                    CreatedBy = "admin",
+                    CreatedBy = Mail == null ? "N/D" : Mail.ToString(),
                     CreatedOn = DateTime.Now
                 });
             }

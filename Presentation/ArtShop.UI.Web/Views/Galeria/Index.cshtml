@@ -103,6 +103,8 @@
                                                         <a class="quick-view" href="~/images/Obras/@product.Image" rel="prettyPhoto"><i class="fa fa-eye"></i></a>
                                                     </div>
 
+                                                    <input type="number" min="0" max="99" value="1" id="cantidad_@product.Id">
+
                                                     @if (this.Session["User"] != null && Convert.ToInt32(this.Session["User"]) == 2)
                                                     {
                                                         <a href="@Url.Action("Edit", new {id = product.Id})" alt="Editar" class="btn btn-success" title="Editar">
@@ -154,7 +156,7 @@
             url: "/Galeria/AddCart/",
             data: {
                 'id': id,
-                'cantidad': 1
+                'cantidad': cantidad
             },
             success: function (datos) {
                 location.reload();

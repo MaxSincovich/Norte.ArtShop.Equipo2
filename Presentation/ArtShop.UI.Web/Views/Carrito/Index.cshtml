@@ -103,9 +103,7 @@
                                             <td class="shoping__cart__quantity">
                                                     <div class="quantity">
                                                         <div class="pro-qty">
-                                                            @*<span class="dec qtybtn">-</span>*@
                                                             <input class="cant" type="text" value=@cartItem.Quantity>
-                                                            @*<butt class="inc qtybtn">+</butt>*@
                                                         </div>
                                                     </div>
                                                 </td>
@@ -113,7 +111,8 @@
                                                 $@totalCant
                                             </td>
                                             <td class="shoping__cart__item__close">
-                                                <span class="icon_close"></span>
+                                                <button onclick="EliminarItem(@cartItem.ProductId)" class="icon_close" id="@cartItem.ProductId"></button>
+                                                @*<span class="icon_close" id="@cartItem.ProductId"></span>*@
                                             </td>
                                         </tr>
                                     }
@@ -139,12 +138,9 @@
                                 <li>Subtotal <span>$@totalPrice</span></li>
                                 <li>Total <span>$@totalPrice</span></li>
                             </ul>
-
                             <button type="button" class="primary-btn" id="btnComprar">
                                 Comprar
                             </button>
-
-                            @*<a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>*@
                         </div>
                     </div>
                 </div>
@@ -190,4 +186,20 @@
             }  
         $button.parent().find('input').val(newVal);
     })
+</script>
+
+
+<script>
+    function EliminarItem(id) {
+        $.ajax({
+            type: "POST",
+            url: "/CartItem/Delete/",
+            data: {
+                'id': id
+            },
+            success: function (datos) {
+                location.reload();
+            }
+        });
+    }
 </script>

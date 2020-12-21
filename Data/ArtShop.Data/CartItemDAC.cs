@@ -70,8 +70,8 @@ namespace ArtShop.Data
 
         public void DeleteById(int id)
         {
-            const string SQL_STATEMENT = "DELETE dbo.CartItem " +
-                                         "WHERE [Id]=@Id ";
+            const string SQL_STATEMENT = "DELETE FROM dbo.CartItem " +
+                                         "WHERE [ProductId]=@Id ";
 
             var db = DatabaseFactory.CreateDatabase(CONNECTION_NAME);
             using (DbCommand cmd = db.GetSqlStringCommand(SQL_STATEMENT))
@@ -80,7 +80,6 @@ namespace ArtShop.Data
                 db.ExecuteNonQuery(cmd);
             }
         }
-
         public CartItem SelectById(int id)
         {
             const string SQL_STATEMENT =

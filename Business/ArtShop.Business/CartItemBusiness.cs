@@ -49,16 +49,11 @@ namespace ArtShop.Business
             result = cartitemDAC.Create(cartitem);
             return result;
         }
-
-
         public void Remove(int id)
         {
             var cartitemDAC = new CartItemDAC();
             cartitemDAC.DeleteById(id);
         }
-
-
-
 
         //private BaseDataService<CartItem> db = new BaseDataService<CartItem>();
         //public List<CartItem> GetProducts()

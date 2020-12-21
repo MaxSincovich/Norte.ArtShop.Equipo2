@@ -41,5 +41,15 @@ namespace ArtShop.UI.Web.Controllers
             var cartItem = CartItemProcess.GetbyCartId(cartId).Where(a => a.ProductId == idProducto).FirstOrDefault();            
             return cartItem;
         }
+
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        public void Delete(int id)
+        {
+            if (id != 0)
+            {
+                CartItemProcess.Remove(id);
+            }
+        }
     }
 }

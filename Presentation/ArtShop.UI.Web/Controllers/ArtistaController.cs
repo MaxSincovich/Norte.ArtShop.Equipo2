@@ -40,10 +40,8 @@ namespace ArtShop.UI.Web.Controllers
                 if(artRet.Id != 0)
                     return RedirectToAction("Index");
             }
-
             return View(artist);
         }
-
         public ActionResult Edit(int? id)
         {
             var user = System.Web.HttpContext.Current.Session["User"];
@@ -73,7 +71,6 @@ namespace ArtShop.UI.Web.Controllers
                 artistaProcess.Edit(artist);
                 return RedirectToAction("Index");
             }
-
             return View(artist);
         }
         public ActionResult Delete(int id)

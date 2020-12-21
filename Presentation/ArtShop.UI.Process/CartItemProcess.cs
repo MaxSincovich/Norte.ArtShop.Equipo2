@@ -31,5 +31,9 @@ namespace ArtShop.UI.Process
             //var response = HttpGet<List<Product>>("api/CartItem/BuscarItems", new Dictionary<string, object>(), MediaType.Json);
             return response;
         }
+        public void Remove(int id)
+        {
+            HttpDelete<Artist>("api/CartItem/Eliminar", id, MediaType.Json);
+        }
     }
 }
