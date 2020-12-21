@@ -56,10 +56,15 @@ namespace ArtShop.UI.Web.Controllers
         }
         public ActionResult Create()
         {
-            var artProcess = new ArtistaProcess();
-            ViewBag.ArtistId = new SelectList(artProcess.List(),"Id", "LastName");
+            var user = System.Web.HttpContext.Current.Session["User"];
+            if (user != null && Convert.ToInt32(user) == 2)
+            {
+                var artProcess = new ArtistaProcess();
+                ViewBag.ArtistId = new SelectList(artProcess.List(), "Id", "LastName");
 
-            return View();
+                return View();
+            }
+            return RedirectToAction("Index");
         }
 
         [ValidateAntiForgeryToken]
@@ -73,15 +78,18 @@ namespace ArtShop.UI.Web.Controllers
                 if (productRet.Id != 0)
                     return RedirectToAction("Index");
             }
-
             var artProcess = new ArtistaProcess();
             ViewBag.ArtistId = new SelectList(artProcess.List(), "Id", "LastName", product.ArtistId);
-
             return View(product);
         }
-
         public ActionResult Edit(int? id)
         {
+            var user = System.Web.HttpContext.Current.Session["User"];
+            if (user == null && Convert.ToInt32(user) != 2)
+            {
+                return RedirectToAction("Index");
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -91,12 +99,10 @@ namespace ArtShop.UI.Web.Controllers
             {
                 return HttpNotFound();
             }
-
             var artProcess = new ArtistaProcess();
             ViewBag.ArtistId = new SelectList(artProcess.List(), "Id", "LastName", product.ArtistId);
             return View(product);
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -114,6 +120,11 @@ namespace ArtShop.UI.Web.Controllers
         }
         public ActionResult Delete(int id)
         {
+            var user = System.Web.HttpContext.Current.Session["User"];
+            if (user == null && Convert.ToInt32(user) != 2)
+            {
+                return RedirectToAction("Index");
+            }
             Product product = productProcess.Get(id);
             if (product == null)
             {
@@ -123,7 +134,6 @@ namespace ArtShop.UI.Web.Controllers
             return View(product);
         }
 
-        //[HttpPost, ActionName("Delete")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Product product)
@@ -133,7 +143,6 @@ namespace ArtShop.UI.Web.Controllers
                 productProcess.Remove(product.Id);
                 return RedirectToAction("Index");
             }
-
             return View(product);
         }
     }

@@ -51,10 +51,11 @@ namespace ArtShop.UI.Web.Controllers
             }
         }
 
-        [Authorize]
+        //[Authorize]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            System.Web.HttpContext.Current.Session["User"] = null;
             return RedirectToAction("Index", "Home");
         }
     }
