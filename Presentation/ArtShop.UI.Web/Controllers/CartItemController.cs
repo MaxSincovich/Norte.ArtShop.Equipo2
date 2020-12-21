@@ -19,7 +19,6 @@ namespace ArtShop.UI.Web.Controllers
                 var CartItem = CartItemProcess.Add(item);
                 listCartItemResult.Add(CartItem);
             }
-
             return ListcartItem;
         }
         public int Getcount()

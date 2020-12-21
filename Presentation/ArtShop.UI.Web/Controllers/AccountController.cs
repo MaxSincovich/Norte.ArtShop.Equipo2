@@ -64,5 +64,32 @@ namespace ArtShop.UI.Web.Controllers
             System.Web.HttpContext.Current.Session["UserMail"] = null;
             return RedirectToAction("Index", "Home");
         }
+
+
+        public ActionResult Create()
+        {
+            var user = System.Web.HttpContext.Current.Session["User"];
+            if (user == null)
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Create(Users user)
+        {
+            user.DNI = "1";
+            user.IdUsuario = 1;
+            user.FechaNacimiento = DateTime.Now;
+            user.FechaCreacion = DateTime.Now;
+            //if (ModelState.IsValid)
+            //{
+                var artRet = uP.Create(user);
+                return RedirectToAction("Index", "Home");
+            //}
+            //return View();
+        }
     }
 }
