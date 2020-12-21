@@ -30,6 +30,7 @@ namespace ArtShop.Entities.Model
         public int ItemCount { get; set; }
         [DataMember]
         public string UserName { get; set; }
+
         [DataMember]
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
     }

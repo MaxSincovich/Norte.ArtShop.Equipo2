@@ -27,6 +27,8 @@ namespace ArtShop.Entities.Model
         public int ProductId { get; set; }
 
         public virtual Order Order { get; set; }
+
+        [DataMember]
         public virtual Product Product { get; set; }
     }
 }

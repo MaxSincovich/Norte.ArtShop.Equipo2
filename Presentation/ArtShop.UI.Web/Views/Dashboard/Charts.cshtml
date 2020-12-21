@@ -14,7 +14,7 @@
     <title>ArtShop - Dashboard - Gráficos</title>
 
     <!-- Dashboard styles -->
-    <link href="@Url.Content("~/Content/css/dashboard/sb-admin-2.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/sb-admin-2.min.css")" rel="stylesheet" type="text/css" />
 
     <!-- Dashboard fonts -->
     <link href="@Url.Content("~/Content/fonts/dashboard/all.min.css")" rel="stylesheet" type="text/css" />
@@ -302,7 +302,10 @@
     <!-- Dashboard scripts -->
     @Scripts.Render("~/bundles/dashboard")
 
-    <!-- Page level custom scripts -->
+@Scripts.Render("~/Content/cssDashboard")
+
+
+<!-- Page level custom scripts -->
     <script src="~/Scripts/dashboard/chart-pie-clients.js"></script>
     <script src="~/Scripts/dashboard/chart-area-earnings.js"></script>
     <script src="~/Scripts/dashboard/chart-bar-example.js"></script>

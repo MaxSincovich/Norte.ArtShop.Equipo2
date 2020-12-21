@@ -44,6 +44,9 @@ namespace ArtShop.Business
             ArtistBusiness ab = new ArtistBusiness();
             ProductBusiness pb = new ProductBusiness();
 
+            int[] ProductIds = pb.List().Select(x => x.Id).ToArray();
+
+
             for (int i = 0; i < quantity; i++)
             {
                 var order = new Order();
@@ -53,7 +56,7 @@ namespace ArtShop.Business
                 order.OrderDate = RandomDay(random);
                 order.OrderNumber = RandomInt(random, 1000000);
                 order.Id = RandomInt(random, 200+quantity);
-                order.OrderDetail = getMockedDetail(random,ab,pb);
+                order.OrderDetail = getMockedDetail(random,ab,pb, ProductIds);
                 order.TotalPrice = order.OrderDetail.First().Price * order.OrderDetail.First().Quantity;
                 ret.Add(order);
             }
@@ -63,12 +66,12 @@ namespace ArtShop.Business
 
 
 
-        private List<OrderDetail> getMockedDetail(Random random , ArtistBusiness ab, ProductBusiness pb)
+        private List<OrderDetail> getMockedDetail(Random random , ArtistBusiness ab, ProductBusiness pb, int[] prodIds)
         {
             List<OrderDetail> ret = new List<OrderDetail>();
             var dtl = new OrderDetail();
 
-            dtl.Product = pb.Get(RandomValidID(random));
+            dtl.Product = pb.Get(RandomValidProductId(random, prodIds));
             dtl.Product.Artist = ab.Get(dtl.Product.ArtistId);
             dtl.ProductId = dtl.Product.Id;
             dtl.Quantity = RandomInt(random, 20);
@@ -110,11 +113,12 @@ namespace ArtShop.Business
             return gen.Next(min,max);
         }
 
-        static int RandomValidID(Random gen)
+        static int RandomValidProductId(Random gen, int[] prodIds)
         {
-            int[] ids = new[] {3, 4, 5, 7, 15, 16, 17, 18, 20};
-            int numeroASeleccionar = RandomInt(gen, 8);
-            return ids[numeroASeleccionar];
+           // int[] ids = new[] {3, 4, 5, 7, 15, 16, 17, 18, 20};
+
+            int numeroASeleccionar = RandomInt(gen, prodIds.Length);
+            return prodIds[numeroASeleccionar];
         }
 
     }
