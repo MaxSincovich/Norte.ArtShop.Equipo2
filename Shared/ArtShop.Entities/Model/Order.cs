@@ -20,17 +20,17 @@ namespace ArtShop.Entities.Model
     
     public partial class Order : IdentityBase
     {
-
+        [DataMember]
         public DateTime OrderDate { get; set; }
-
+        [DataMember]
         public double TotalPrice { get; set; }
-
+        [DataMember]
         public int OrderNumber { get; set; }
-
+        [DataMember]
         public int ItemCount { get; set; }
-
+        [DataMember]
         public string UserName { get; set; }
-
+        [DataMember]
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
     }
 }
