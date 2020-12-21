@@ -54,9 +54,6 @@ namespace ArtShop.UI.Web.Controllers
             }
             return Json(Cart, JsonRequestBehavior.AllowGet);
         }
-
-
-
         public ActionResult Create()
         {
             var artProcess = new ArtistaProcess();
@@ -64,7 +61,6 @@ namespace ArtShop.UI.Web.Controllers
 
             return View();
         }
-
 
         [ValidateAntiForgeryToken]
         [HttpPost]
@@ -77,7 +73,6 @@ namespace ArtShop.UI.Web.Controllers
                 if (productRet.Id != 0)
                     return RedirectToAction("Index");
             }
-
 
             var artProcess = new ArtistaProcess();
             ViewBag.ArtistId = new SelectList(artProcess.List(), "Id", "LastName", product.ArtistId);
@@ -113,7 +108,6 @@ namespace ArtShop.UI.Web.Controllers
                 return RedirectToAction("Index");
             }
 
-
             var artProcess = new ArtistaProcess();
             ViewBag.ArtistId = new SelectList(artProcess.List(), "Id", "LastName",product.ArtistId);
             return View(product);
@@ -142,7 +136,5 @@ namespace ArtShop.UI.Web.Controllers
 
             return View(product);
         }
-
-
     }
 }

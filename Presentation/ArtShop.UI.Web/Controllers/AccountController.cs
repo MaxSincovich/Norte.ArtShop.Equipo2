@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web.Mvc;
 using System.Web.Security;
 using ArtShop.Entities.Model;
@@ -35,6 +37,7 @@ namespace ArtShop.UI.Web.Controllers
                 {
                     if (userdb.Contraseña == user.Contraseña || userdb.NombreUsuario == user.NombreUsuario)
                     {
+                        System.Web.HttpContext.Current.Session["User"] = userdb.IdTipoUsuario;
                         FormsAuthentication.SetAuthCookie(user.NombreUsuario, true);
                         return RedirectToAction("Index", "Home");
                     }
