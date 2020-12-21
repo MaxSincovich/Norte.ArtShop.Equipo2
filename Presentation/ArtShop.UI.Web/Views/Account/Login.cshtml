@@ -5,43 +5,52 @@
 @model ArtShop.Entities.Model.Users
 
 <div id="content-wrapper">
-    <section  class="white">
-            <h1 class="text-center">Bienvenido</h1>
-            <div class="row">
-                <div class="row justify-content-sm-center">
-                    <div class="col-md-12">
-                        <div class="card border-info text-center">
-                            <div class="card-header">
-                                Inicie sesion
-                            </div>
-                            <div class="card-body">
-                                @using (Html.BeginForm())
-                                {
-                                    @Html.AntiForgeryToken()
+    <section class="white">
 
-                                    @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @placeholder = "Usuario", @required = true } });
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item " aria-current="page"><a href="/Home/"><strong>Inicio</strong></a></li>
+                <li class="breadcrumb-item active"><strong>Login</strong></li>
+            </ol>
 
-                                    <br /><br />
+        </nav>
 
-                                    @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @placeholder = "Password", @required = true } });
-
-                                    <br /><br />
-                                    if (ViewBag.ErrorMessage != null)
-                                    {
-                                        <span class="text-danger">@ViewBag.ErrorMessage</span>
-                                    }
-									
-                                    <button class="btn btn-lg btn-outline-primary btn-block mb-1" type="submit">Ingresar</button>
-									
-                                    <button id="btnRegistro" class="btn btn-lg btn-outline-primary btn-block mb-1" type="submit">Registrate</button>
-
-                                }
-                            </div>
+        <h1 class="text-center">Bienvenido</h1>
+        <div class="row">
+            <div class="row justify-content-sm-center">
+                <div class="col-md-12">
+                    <div class="card border-info text-center">
+                        <div class="card-header">
+                            Inicie sesion
                         </div>
+                        <div class="card-body">
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @placeholder = "Usuario", @required = true } });
+
+                                <br /><br />
+
+                                @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @placeholder = "Password", @required = true } });
+
+                                <br /><br />
+                                if (ViewBag.ErrorMessage != null)
+                                {
+                                    <span class="text-danger">@ViewBag.ErrorMessage</span>
+                                }
+
+                                <button class="btn btn-lg btn-outline-primary btn-block mb-1" type="submit">Ingresar</button>
+
+                                <button id="btnRegistro" class="btn btn-lg btn-outline-primary btn-block mb-1" type="submit">Registrate</button>
+
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-</section>
+    </section>
 </div>
 
 

@@ -6,6 +6,15 @@
 
 <div id="content-wrapper">
     <section id="contact" class="white">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item " aria-current="page"><a href="/Home/"><strong>Inicio</strong></a></li>
+                <li class="breadcrumb-item " aria-current="page"><a href="/Galeria/Index"><strong>Galeria</strong></a></li>
+                <li class="breadcrumb-item active"><strong>Editar</strong></li>
+            </ol>
+
+        </nav>
         <div class="container">
 
 
@@ -78,7 +87,7 @@
                     <div class="form-group">
                         <div class="form-group col-md-6">
                             @Html.LabelFor(model => model.Artist)
-                            @Html.DropDownList("ArtistId",null, htmlAttributes: new { @class = "selectpicker form-control", @data_live_search = "true" })
+                            @Html.DropDownList("ArtistId", null, htmlAttributes: new { @class = "selectpicker form-control", @data_live_search = "true" })
                             @Html.ValidationMessageFor(model => model.ArtistId, "", new { @class = "text-danger" })
                         </div>
                     </div>
