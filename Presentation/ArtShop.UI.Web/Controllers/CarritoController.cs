@@ -20,7 +20,7 @@ namespace ArtShop.UI.Web.Controllers
             var sessionCart = Session["Cart"];
             var User = Session["User"];
 
-            if (sessionCart == null && String.IsNullOrEmpty(sessionCart.ToString()))
+            if (sessionCart == null || String.IsNullOrEmpty(sessionCart.ToString()))
             {
                 return RedirectToAction("Index", "Home");
             }

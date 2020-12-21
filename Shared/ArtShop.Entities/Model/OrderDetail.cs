@@ -17,12 +17,13 @@ namespace ArtShop.Entities.Model
     [Serializable]
     public partial class OrderDetail : IdentityBase
     {
-
+        [DataMember]
         public double Price { get; set; }
-
+        [DataMember]
         public int Quantity { get; set; }
 
         public int OrderId { get; set; }
+        [DataMember]
         public int ProductId { get; set; }
 
         public virtual Order Order { get; set; }

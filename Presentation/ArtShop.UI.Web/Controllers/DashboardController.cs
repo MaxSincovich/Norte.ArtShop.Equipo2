@@ -46,6 +46,10 @@ namespace ArtShop.UI.Web.Controllers
                 return RedirectToAction("Index", "Home");
             }
             var orders = _op.GetAll();
+
+
+            //var OrderBusiness = new OrderBusiness();
+            //orders = OrderBusiness.GetAll();
             return View(orders.OrderByDescending(o => o.OrderDate).ToList());
         }
     }
