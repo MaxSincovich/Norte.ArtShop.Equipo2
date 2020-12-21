@@ -41,15 +41,19 @@ namespace ArtShop.UI.Web.Controllers
             var cartItem = CartItemProcess.GetbyCartId(cartId).Where(a => a.ProductId == idProducto).FirstOrDefault();            
             return cartItem;
         }
-
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+            var sessionCart = Session["Cart"];
             if (id != 0)
             {
                 CartItemProcess.Remove(id);
             }
+
+            if (CartItemProcess.GetbyCartId(Convert.ToInt32(sessionCart.ToString().Split('|')[1])).Count() == 0)
+            {
+                return RedirectToAction("Index","Home");
+            }
+            return RedirectToAction("Index", "Carrito");
         }
     }
 }

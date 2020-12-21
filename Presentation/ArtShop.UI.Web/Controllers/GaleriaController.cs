@@ -15,6 +15,7 @@ namespace ArtShop.UI.Web.Controllers
         protected CartController cartController = new CartController();
         protected CartItemProcess CartItemProcess = new CartItemProcess();
         protected CartProcess CartProcess = new CartProcess();
+        protected CartItemController CartItemController = new CartItemController();
         public ActionResult Index()
         {
             var lista = productProcess.List();
@@ -30,6 +31,7 @@ namespace ArtShop.UI.Web.Controllers
             if (sesionCart == null || String.IsNullOrEmpty(sesionCart.ToString()))
             {
                 Cart = cartController.CreateCart();
+
                 CartItemProcess.Add(new CartItem()
                 {
                     ProductId = Convert.ToInt32(id),
@@ -43,11 +45,18 @@ namespace ArtShop.UI.Web.Controllers
             else
             {
                 Cart = CartProcess.Get(Convert.ToInt32(sesionCart.ToString().Split('|')[1]));
+
+                var cart = CartItemController.getCartItembyProducto(Convert.ToInt32(id), Cart.Id);
+                if (cart != null)
+                {
+                    CartItemProcess.Remove(cart.Id);
+                }
+
                 CartItemProcess.Add(new CartItem()
                 {
                     ProductId = Convert.ToInt32(id),
                     Price = productProcess.Get(Convert.ToInt32(id)).Price,
-                    Quantity = Convert.ToInt32(cantidad),
+                    Quantity = Convert.ToInt32(cantidad) + (cart == null ? 0 : cart.Quantity),
                     CartId = Cart.Id,
                     CreatedBy = Mail == null ? "N/D" : Mail.ToString(),
                     CreatedOn = DateTime.Now

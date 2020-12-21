@@ -17,7 +17,7 @@ namespace ArtShop.UI.Web.Controllers
 
         public ActionResult Login()
         {
-            if (System.Web.HttpContext.Current.Session["User"] == null)
+            if (System.Web.HttpContext.Current.Session["User"] != null)
             {
                 return RedirectToAction("Index", "Home");
             }

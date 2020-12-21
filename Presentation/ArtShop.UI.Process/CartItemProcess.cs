@@ -28,7 +28,6 @@ namespace ArtShop.UI.Process
         public List<CartItem> GetbyCartId( int cartId)
         {
             var response = HttpGet<List<CartItem>>($"api/CartItem/BuscarItems/{cartId}", new Dictionary<string, object>(), MediaType.Json);
-            //var response = HttpGet<List<Product>>("api/CartItem/BuscarItems", new Dictionary<string, object>(), MediaType.Json);
             return response;
         }
         public void Remove(int id)

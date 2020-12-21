@@ -1,4 +1,5 @@
-﻿using ArtShop.UI.Process;
+﻿using ArtShop.Entities.Model;
+using ArtShop.UI.Process;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,16 @@ namespace ArtShop.UI.Web.Controllers
         public ActionResult Index()
         {
             var sessionCart = Session["Cart"];
+            var User = Session["User"];
+
+            if (sessionCart == null && String.IsNullOrEmpty(sessionCart.ToString()))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            if (User == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
             if (sessionCart != null && !String.IsNullOrEmpty(sessionCart.ToString()))
             {
@@ -32,7 +43,35 @@ namespace ArtShop.UI.Web.Controllers
         }
         public ActionResult Compra()
         {
+            var User = Session["User"];
+
+            //if (sessionCart == null && String.IsNullOrEmpty(sessionCart.ToString()))
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
+            if (User == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View();
+            //return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult Compra(Order orden)
+        {
+            var User = Session["User"];
+
+            //if (sessionCart == null && String.IsNullOrEmpty(sessionCart.ToString()))
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
+            if (User == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            Session["Cart"] = null;
+            return RedirectToAction("Index", "Home");
         }
     }
 }
