@@ -270,6 +270,9 @@
     <Content Include="fonts\ElegantIcons.eot" />
     <Content Include="fonts\ElegantIcons.ttf" />
     <Content Include="fonts\ElegantIcons.woff" />
+    <Content Include="Content\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\webfonts\fa-solid-900.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\init.js" />
@@ -344,6 +347,7 @@
     <Folder Include="images\prettyPhoto\light_rounded\" />
     <Folder Include="images\prettyPhoto\light_square\" />
     <Folder Include="Views\Admin\" />
+    <Folder Include="Views\HtmlHelpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
